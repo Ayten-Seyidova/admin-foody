@@ -1,0 +1,53 @@
+{
+    "translation": {
+      "Welcome to React": "React in18 xos Geldiz!",
+      "add product": "məhsul əlavə et",
+      "add restaurant": "restoran əlavə et",
+      "add category": "kateqoriya əlavə et",
+      "success_message":"Əməliyyat uğurludur!",
+      "create": "yarat",
+      "add offer": "təklif əlavə et",
+      "title delete": "Silindiyinizə əminsinizmi?",
+      "subtitle product delete": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq!",
+      "subtitle restaurants delete": "Diqqət! Bu restoranı silsəniz, geri qayıtmayacaq!",
+      "subtitle order delete": "Diqqət! Bu sifarişi silsəniz, geri qayıtmayacaq!",
+      "subtitle offer delete": "Diqqət! Bu təklifi silsəniz, geri qayıtmayacaq!",
+      "subtitle category delete": "Diqqət! Bu kateqoriyanı silsəniz, geri qayıtmayacaq!",
+      "delete": "sil",
+      "cancel": "ləğv et",
+      "admin": "Admin",
+      "no risk":"Heç bir risk təyin edilməyib.",
+      "menu": {
+        "dashboard": "İdarə paneli",
+        "products": "Məhsullar",
+        "restaurants": "Restoranlar",
+        "category": "Kateqoriya",
+        "orders": "Sifarişlər",
+        "offers": "Təkliflər",
+        "logout": "Çıxış"
+      },
+      "form":{
+        "id":"ID",
+        "customer_id":"Müştəri ID", 
+        "created_at":"Tarix", 
+        "amount":"Məbləğ", 
+        "payment":"Ödəniş", 
+        "contact":"Əlaqə",
+        "img_url":"şəkil",
+        "upload title":"Şəkilinizi yükləyin",
+        "form title":"Təsvirinizi və lazımi məlumatları əlavə edin",
+        "name":"Ad",
+        "title":"Başlıq",
+        "cuisine":"Mətbəx",
+        "description":"Təsvir",
+        "price":"Qiymət $",
+        "delivery price":"Çatdırılma qiyməti $",
+        "delivery minute":"Çatdırılma dəqiqəsi",
+        "address":"Ünvan",
+        "category":"Kateqoriya",
+        "restaurants":"Restoranlar",
+        "slug":"Link başlığı",
+        "upload":"Yüklə"
+      }
+    }
+  }
