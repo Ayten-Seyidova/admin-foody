@@ -1,0 +1,54 @@
+{
+    "translation": {
+      "Welcome to React": "Bienvenue à React et react-i18next",
+      "add product": "ajouter produit",
+      "create": "créer",
+      "success_message":"L'opération est réussie!",
+      "add restaurant": "ajouter restaurant",
+      "add category": "ajouter catégorie",
+      "add offer": "add offre",
+      "title delete": "Êtes-vous sûr qu'il est supprimé ?",
+      "subtitle product delete": "Attention ! Si vous supprimez ce produit, il ne reviendra pas... ?",
+      "subtitle restaurant delete": "Attention ! Si vous supprimez ce restaurant, il ne reviendra pas... ?",
+      "subtitle order delete": "Attention ! Si vous supprimez ce commandes, il ne reviendra pas... ?",
+      "subtitle offer delete": "Attention ! Si vous supprimez ce offre, il ne reviendra pas... ?",
+      "subtitle category delete": "Attention ! Si vous supprimez ce catégorie, il ne reviendra pas... ?",
+      "delete": "supprimer",
+      "cancel": "annuler",
+      "admin": "Administrateur",
+      "no risk":"Il n'y a aucun risque assigné.",
+      "menu": {
+        "dashboard": "Tableau de bord",
+        "products": "Produits",
+        "restaurants": "Restaurants",
+        "category": "Catégorie",
+        "orders": "Commandes",
+        "offers": "Offres",
+        "logout": "Déconnexion"
+      },
+      "form":{
+        "id":"ID",
+        "customer_id":"Identifiant client", 
+        "created_at":"Date", 
+        "amount":"Montant", 
+        "payment":"Paiement", 
+        "contact":"Contact",
+        "img_url":"image",
+        "upload title":"Téléchargez votre image",
+        "form title":"Ajoutez votre description et les informations nécessaires",
+        "name" :"Nom",
+        "title":"Titre",
+        "cuisine":"Cuisine",
+        "description":"Description",
+        "price":"Prix $",
+        "delivery price":"Prix de livraison $",
+        "delivery minuten":"Minutes de livraison",
+        "address":"adresse",
+        "category":"Catégorie",
+        "restaurants":"Restaurants",
+        "slug":"limace",
+        "upload": "Télécharger"
+      }
+  
+    }
+  }
