@@ -14,6 +14,7 @@
     margin-left: 0;
     transition: 0.5s;
     position: sticky;
+    /* z-index: 9; */
     top: 0;
 }
 
@@ -32,7 +33,7 @@
     padding: 24px 16px 44px 24px;
 }
 
-.side-menu a {
+.side-menu a, .side-menu button {
     color: rgba(242, 242, 242, 0.87);
     text-decoration: none;
     font-weight: 500;
@@ -41,13 +42,17 @@
     display: block;
     border-radius: 4px;
     transition: .3s all ease-in-out;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
 }
 
-.side-menu a:hover, .side-menu a:focus, .side-menu a:active {
+.side-menu a:hover, .side-menu a:focus, .side-menu a:active, .side-menu button:hover, .side-menu button:focus, .side-menu button:active {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.side-menu a img {
+.side-menu a img, .side-menu button img {
     margin-right: 27px;
 }
 

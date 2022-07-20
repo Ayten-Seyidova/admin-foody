@@ -1,13 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 body {
     background-color: #1E1E30 !important;
     color: #fff !important;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 * {
-  box-sizing: border-box !important;
+    box-sizing: border-box !important;
 }
 
 ::-webkit-scrollbar {
@@ -27,45 +30,49 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  body {
-    overflow: hidden;
-  }
+    body {
+        overflow: hidden;
+    }
 
-  .mobile-add-btn, .admin-name {
-    display: none;
-  }
+    .right-sidebar {
+        width: 100% !important;
+    }
 
-  .content.is-open {
-    margin-left: 100%;
-  }
+    .mobile-add-btn, .admin-name {
+        display: none;
+    }
 
-  .sidebar {
-    display: block !important;
-  }
+    .content.is-open {
+        margin-left: 100%;
+    }
 
-  .sidebar.is-open {
-    min-width: calc(100% - 64px);
-    max-width: calc(100% - 64px);
-    margin-left: 0;
-    transition: all 0.5s, height 0s;
-  }
+    .sidebar {
+        display: block !important;
+    }
 
-  .sidebar.is-open > .sidebar-header span {
-    display: unset;
-    margin-top: 2px;
-  }
+    .sidebar.is-open {
+        min-width: calc(100% - 64px);
+        max-width: calc(100% - 64px);
+        margin-left: 0;
+        transition: all 0.5s, height 0s;
+    }
 
-  .side-footer {
-    margin-top: 50px !important;
-  }
+    .sidebar.is-open > .sidebar-header span {
+        display: unset;
+        margin-top: 2px;
+    }
 
-  li a.dropdown-toggle::after {
-    display: inline-block;
-    position: relative;
-    left: 68%;
-  }
+    .side-footer {
+        margin-top: 50px !important;
+    }
 
-  .sidebar-btn {
-    display: inline !important;
-  }
+    li a.dropdown-toggle::after {
+        display: inline-block;
+        position: relative;
+        left: 68%;
+    }
+
+    .sidebar-btn {
+        display: inline !important;
+    }
 }
