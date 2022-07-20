@@ -1,7 +1,45 @@
-/* .piechart {
+.donut {
   height: 472px;
   width: 472px;
   left: 288px;
   top: 80px;
   border-radius: 14px;
-} */
+  background-color: #27283c;
+}
+
+.donut > * {
+  padding: 50px;
+}
+
+.area {
+  position: absolute;
+  width: 634px;
+  height: 472px;
+  left: 790px;
+  top: 82px;
+
+  background: #27283c;
+  border-radius: 14px;
+}
+
+.risk {
+  position: absolute;
+  width: 636px;
+  height: 472px;
+  left: 288px;
+  top: 576px;
+
+  background: #27283c;
+  border-radius: 14px;
+}
+
+.risk2 {
+  position: absolute;
+  width: 472px;
+  height: 472px;
+  left: 952px;
+  top: 576px;
+
+  background: #27283c;
+  border-radius: 14px;
+}

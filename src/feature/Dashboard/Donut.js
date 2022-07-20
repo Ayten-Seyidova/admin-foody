@@ -16,12 +16,12 @@ class App extends Component {
             donut: {
               labels: {
                 show: true,
-                color: "#000",
+                // color: "#000",
                 name: {
                   show: true,
                   fontSize: "16px",
-                  color: "white",
-                  fontWeight:'bold'
+                  color: undefined,
+                  fontWeight: "bold",
                 },
                 value: { show: false },
                 total: {

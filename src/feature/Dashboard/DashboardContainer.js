@@ -1,10 +1,14 @@
+import Area from "./Area";
 import PieChart from "./Donut";
 import "./Donut.css";
 
 const DashboardContainer = () => {
   return (
     <>
-      <div className="piechart">{<PieChart />}</div>
+      <div className="donut">{<PieChart />}</div>
+      <div className="area">{<Area />}</div>
+      <div className="risk"></div>
+      <div className="risk2"></div>
     </>
   );
 };
