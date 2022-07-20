@@ -10,7 +10,6 @@ import menuIcon from '../../../Image/icon/menu.svg';
 import {
     Navbar,
     Button,
-    NavbarToggler,
     Collapse,
     DropdownItem,
     Dropdown,
@@ -43,7 +42,6 @@ const Header = ({ toggleSidebar }) => {
             <Button className="sidebar-btn" onClick={toggleSidebar}>
                 <img src={menuIcon} alt="menu" />
             </Button>
-            {/* <NavbarToggler onClick={toggleTopbar} /> */}
 
             <Collapse className="d-flex justify-content-end align-items-center" isOpen={topbarIsOpen} >
                 <AddProductBtn placement='end' />

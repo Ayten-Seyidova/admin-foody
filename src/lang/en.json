@@ -1,5 +1,15 @@
 {
     "translation": {
+      "welcome": "Welcome Admin",
+      "username": "Username",
+      "password": "Password",
+      "sign-in": "sign in",
+      "nameError": "Username is wrong",
+      "passwordError": "Password is wrong",
+      "nameRequired": "Username is required",
+      "passwordRequired": "Password is required",
+      "passwordLength": "Password must be longer than 8 character",
+      "back": "Go back",
       "Welcome to React": "Welcome to React and react-i18next",
       "add product": "add product",
       "add restaurant": "add restaurant",

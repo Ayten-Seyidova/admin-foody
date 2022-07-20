@@ -1,5 +1,15 @@
 {
     "translation": {
+      "welcome": "Bienvenue Admin",
+      "username": "Nom d'utilisateur",
+      "password": "Mot de passe",
+      "sign-in": "s'identifier",
+      "nameError": "Le nom d'utilisateur est erroné",
+      "passwordError": "Le mot de passe est erroné",
+      "nameRequired": "Nom d'utilisateur est nécessaire",
+      "passwordRequired": "Mot de passe requis",
+      "passwordLength": "Le mot de passe doit comporter plus de 8 caractères",
+      "back": "Retourner",
       "Welcome to React": "Bienvenue à React et react-i18next",
       "add product": "ajouter produit",
       "create": "créer",
