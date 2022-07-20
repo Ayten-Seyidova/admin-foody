@@ -1,7 +1,12 @@
+import PieChart from "./Donut";
+import "./Donut.css";
+
 const DashboardContainer = () => {
-    return(
-        <>Dashboard</>
-    );
-}
+  return (
+    <>
+      <div className="piechart">{<PieChart />}</div>
+    </>
+  );
+};
 
 export default DashboardContainer;

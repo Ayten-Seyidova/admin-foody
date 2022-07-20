@@ -1,7 +1,5 @@
 const ProductContainer = () => {
-    return(
-        <>Product</>
-    );
-}
+  return <>Product</>;
+};
 
 export default ProductContainer;

@@ -12,25 +12,25 @@ import Header from "../shared/components/Header/header";
 import Page404 from "./404";
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => {
-    return (
-        <Container
-            fluid
-            className={classNames("content", { "is-open": sidebarIsOpen })}>
-            <Header toggleSidebar={toggleSidebar} />
+  return (
+    <Container
+      fluid
+      className={classNames("content", { "is-open": sidebarIsOpen })}
+    >
+      <Header toggleSidebar={toggleSidebar} />
 
-            <Routes toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen}>
-                <Route path="*" element={<Navigate replace to="/dashboard" />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/restaurants" element={<Restaurants />} />
-                <Route path="/category" element={<Category />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/offer" element={<Offer />} />
-                <Route path="/error" element={<Page404 />} />
-            </Routes>
-        </Container>
-    )
+      <Routes toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen}>
+        <Route path="*" element={<Navigate replace to="/dashboard" />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/offer" element={<Offer />} />
+        <Route path="/error" element={<Page404 />} />
+      </Routes>
+    </Container>
+  );
 };
 
 export default Content;
-

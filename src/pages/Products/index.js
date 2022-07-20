@@ -1,9 +1,7 @@
 import ProductContainer from "../../feature/Products/ProductContainer";
 
 const Product = () => {
-    return (
-        <ProductContainer />
-    )
-}
+  return <ProductContainer />;
+};
 
 export default Product;

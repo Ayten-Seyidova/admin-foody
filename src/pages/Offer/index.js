@@ -1,9 +1,7 @@
 import OfferContainer from "../../feature/Offer/OfferContainer";
 
 const Offer = () => {
-    return (
-        <OfferContainer />
-    )
-}
+  return <OfferContainer />;
+};
 
 export default Offer;

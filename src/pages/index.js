@@ -8,30 +8,33 @@ import Login from "./Login";
 import { useSelector } from "react-redux";
 
 const Pages = () => {
-    const [sidebarIsOpen, setSidebarOpen] = useState(true);
-    const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
+  const [sidebarIsOpen, setSidebarOpen] = useState(true);
+  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
 
-    const [auth, setAuth] = useState([]);
-    useEffect(() => {
-        setAuth(localStorage.getItem('isLogin'));
-    }, []);
+  const [auth, setAuth] = useState([]);
+  useEffect(() => {
+    setAuth(localStorage.getItem("isLogin"));
+  }, []);
 
-    const state = useSelector((state) => state);
-    return (
-        <>
-            {(state.loginSlice.isLogin || auth === "true") ? (
-                <div className="d-flex container-fluid">
-                    <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
-                    <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
-                </div>
-            ) : (
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="*" element={<Navigate replace to="login" />} />
-                </Routes>
-            )}
-        </>
-    );
+  const state = useSelector((state) => state);
+  return (
+    <>
+      {state.loginSlice.isLogin || auth === "true" ? (
+        <div className="d-flex container-fluid">
+          <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+          <Content
+            toggleSidebar={toggleSidebar}
+            sidebarIsOpen={sidebarIsOpen}
+          />
+        </div>
+      ) : (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Navigate replace to="login" />} />
+        </Routes>
+      )}
+    </>
+  );
 };
 
 export default Pages;
