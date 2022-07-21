@@ -1,7 +1,5 @@
 const RestaurantContainer = () => {
-    return(
-        <>Restaurant</>
-    );
-}
+  return <>Restaurant</>;
+};
 
 export default RestaurantContainer;

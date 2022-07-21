@@ -1,7 +1,5 @@
 const OrderContainer = () => {
-    return(
-        <>Order</>
-    );
-}
+  return <>Order</>;
+};
 
 export default OrderContainer;

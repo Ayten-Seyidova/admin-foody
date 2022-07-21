@@ -1,7 +1,5 @@
 const OfferContainer = () => {
-    return(
-        <>Offer</>
-    );
-}
+  return <>Offer</>;
+};
 
 export default OfferContainer;

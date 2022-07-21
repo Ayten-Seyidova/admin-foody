@@ -1,9 +1,7 @@
 import RestaurantContainer from "../../feature/Restaurants/RestaurantContainer";
 
 const Restaurant = () => {
-    return (
-        <RestaurantContainer />
-    )
-}
+  return <RestaurantContainer />;
+};
 
 export default Restaurant;
