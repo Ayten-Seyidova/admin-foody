@@ -9,12 +9,70 @@ body {
     overflow-x: hidden;
 }
 
+.MuiTableCell-root {
+    z-index: 0 !important;
+}
+
+.MuiToolbar-root {
+    position: relative;
+    margin-top: 30px;
+}
+
+.MuiTablePagination-displayedRows {
+    position: absolute;
+    left: 45px;
+    margin-bottom: 0;
+}
+
+.MuiTablePagination-actions {
+    position: absolute;
+    left: 0;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0  !important;
+}
+
+.MuiButtonBase-root {
+    padding: 0 !important;
+    background-image: url("/src/Image/icon/left.svg");
+    border-radius: 0 !important;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    color: #FCDDEC !important;
+}
+
+.MuiSelect-select {
+    position: absolute;
+    right: -30px;
+    background-color: #fff !important;
+    color: #00072B !important;
+    width: 60px !important;
+    padding: 6px 16px !important;
+}
+
+.MuiMenuItem-gutters {
+    background-image: none;
+    color: #00072B !important;
+    width: auto;
+    height: auto;
+    padding: 6px 16px !important;
+}
+
+.MuiTablePagination-selectLabel {
+    margin-bottom: 0;
+    position: absolute;
+    right: 70px;
+}
+
 * {
     box-sizing: border-box !important;
 }
 
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {

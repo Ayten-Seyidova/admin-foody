@@ -1,10 +1,17 @@
-import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useFormik } from 'formik';
-import { useSelector, useDispatch } from 'react-redux';
 import loginImg from '../../Image/components/login.svg';
 import logoImg from '../../Image/logo/logo.svg';
+import az from '../../Image/flag/az.svg';
+import en from '../../Image/flag/en.svg';
+import fr from '../../Image/flag/fr.svg';
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+import { useFormik } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+import { DropdownItem, DropdownToggle } from "reactstrap";
+import { setLogin } from "../../store/slice/loginSlice";
+import { useNavigate } from "react-router-dom";
 import {
     LoginForm,
     LoginImage,
@@ -18,13 +25,6 @@ import {
     SignBtn,
     ErrorText
 } from "./LoginContainer.styled.js";
-import { useTranslation } from 'react-i18next';
-import az from '../../Image/flag/az.svg';
-import en from '../../Image/flag/en.svg';
-import fr from '../../Image/flag/fr.svg';
-import { DropdownItem, DropdownToggle } from "reactstrap";
-import { setLogin } from "../../store/slice/loginSlice";
-import { useNavigate } from "react-router-dom";
 
 
 const lngs = {
