@@ -44,7 +44,7 @@ const Header = ({ toggleSidebar }) => {
             </Button>
 
             <Collapse className="d-flex justify-content-end align-items-center" isOpen={topbarIsOpen} >
-                <AddProductBtn placement='end' />
+                <AddProductBtn name={t('add product')} placement='end' />
                 <Dropdown className='lang-btn' isOpen={isOpen} toggle={toggle}>
                     <DropdownToggle><img src={flags[i18n.resolvedLanguage]} alt={flags[i18n.resolvedLanguage]} /></DropdownToggle>
                     <DropdownMenu className='lang-dropdown'>

@@ -43,7 +43,7 @@
         "amount":"Montant", 
         "payment":"Paiement", 
         "contact":"Contact",
-        "img_url":"image",
+        "image":"image",
         "upload title":"Téléchargez votre image",
         "form title":"Ajoutez votre description et les informations nécessaires",
         "name" :"Nom",

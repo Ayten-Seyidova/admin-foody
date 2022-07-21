@@ -16,11 +16,11 @@ export function AddProductBtn({ name, ...props }) {
     return (
         <>
             <Button variant="primary" onClick={handleShow} className="add-btn">
-                <img src={plusIcon} alt="plus"/> <span className="mobile-add-btn">{(t('add product')).toUpperCase()}</span>
+                <img src={plusIcon} alt="plus"/> <span className="mobile-add-btn">{name.toUpperCase()}</span>
             </Button>
             <Offcanvas className="right-sidebar" show={show} onHide={handleClose} {...props}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>{t('add product').charAt(0).toUpperCase() + t('add product').slice(1)}</Offcanvas.Title>
+                    <Offcanvas.Title>{name.charAt(0).toUpperCase() + name.slice(1)}</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <AddModal/>
