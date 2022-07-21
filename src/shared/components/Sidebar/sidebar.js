@@ -2,9 +2,7 @@ import React from "react";
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import classNames from "classnames";
 import { setLogin } from "../../../store/slice/loginSlice";
-import './sidebar.css';
 import dashboardIcon from '../../../Image/icon/dashboard.svg';
 import productIcon from '../../../Image/icon/product.svg';
 import restaurantIcon from '../../../Image/icon/restaurant.svg';
@@ -14,12 +12,15 @@ import categoryIcon from '../../../Image/icon/category.svg';
 import logoutIcon from '../../../Image/icon/logout.svg';
 import logo from '../../../Image/logo/logo.svg';
 import eacamp from '../../../Image/logo/eacamp.svg';
+import classNames from "classnames";
+import './sidebar.css';
 
 
 const SideBar = ({ isOpen, toggle }) => {
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const logoutUser = () => {
         localStorage.removeItem('isLogin');
         dispatch(setLogin(false));
@@ -38,12 +39,12 @@ const SideBar = ({ isOpen, toggle }) => {
                 <img src={logo} alt="logo" />
             </div>
             <div className="side-menu">
-                <Link to="/dashboard"><img src={dashboardIcon} alt={t("menu.dashboard")} /> {t("menu.dashboard")}</Link>
-                <Link to="/products"><img src={productIcon} alt={t("menu.products")} /> {t("menu.products")}</Link>
-                <Link to="/restaurants"><img src={restaurantIcon} alt={t("menu.restaurants")} /> {t("menu.restaurants")}</Link>
-                <Link to="/category"><img src={categoryIcon} alt={t("menu.category")} /> {t("menu.category")}</Link>
-                <Link to="/orders"><img src={orderIcon} alt={t("menu.orders")} /> {t("menu.orders")}</Link>
-                <Link to="/offer"><img src={offerIcon} alt={t("menu.offers")} /> {t("menu.offers")}</Link>
+                <Link to="/panel/dashboard"><img src={dashboardIcon} alt={t("menu.dashboard")} /> {t("menu.dashboard")}</Link>
+                <Link to="/panel/products"><img src={productIcon} alt={t("menu.products")} /> {t("menu.products")}</Link>
+                <Link to="/panel/restaurants"><img src={restaurantIcon} alt={t("menu.restaurants")} /> {t("menu.restaurants")}</Link>
+                <Link to="/panel/category"><img src={categoryIcon} alt={t("menu.category")} /> {t("menu.category")}</Link>
+                <Link to="/panel/orders"><img src={orderIcon} alt={t("menu.orders")} /> {t("menu.orders")}</Link>
+                <Link to="/panel/offer"><img src={offerIcon} alt={t("menu.offers")} /> {t("menu.offers")}</Link>
                 <button onClick={() => logoutUser()} ><img src={logoutIcon} alt={t("menu.logout")} /> {t("menu.logout")}</button>
 
             </div>

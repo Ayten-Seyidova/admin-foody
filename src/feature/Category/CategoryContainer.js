@@ -6,10 +6,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { CategoryDiv, CategorySpan, CategoryStyled, TablePaginationStyle } from './CategoryContainer.styled';
+import { CategoryDiv, CategorySpan, CategoryStyled, DeleteImage, TablePaginationStyle } from './CategoryContainer.styled';
 import { useTranslation } from 'react-i18next';
 import { AddProductBtn } from '../../shared/components/Header/AddProductBtn';
 import { Image } from 'react-bootstrap';
+import DeleteIcon from '../../Image/icon/delete.svg';
 
 const columns = [
 
@@ -54,7 +55,7 @@ const rows = [
     createData('028', 'RU', 146793744, 17098246),
     createData('029', 'NG', 200962417, 923768),
     createData('030', 'BR', 210147125, 8515767),
-    
+
 ];
 
 export default function CategoryContainer() {
@@ -88,9 +89,11 @@ export default function CategoryContainer() {
                                         key={column.id}
                                         align={column.align}
                                         cellwidth={column.minWidth}>
-                                        {t(`form.`+column.label).toUpperCase()}
+                                        {t(`form.` + column.label).toUpperCase()}
                                     </TableCell>
                                 ))}
+                                     <TableCell align={"right"}
+                                        cellwidth={"20"}></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -110,6 +113,10 @@ export default function CategoryContainer() {
                                                     </TableCell>
                                                 );
                                             })}
+
+                                            <TableCell key={row.id} align={"right"} >
+                                                   <DeleteImage src={DeleteIcon}/>
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
