@@ -23,7 +23,8 @@ import {
     SignInForm,
     SignInput,
     SignBtn,
-    ErrorText
+    ErrorText,
+    LoginSection
 } from "./LoginContainer.styled.js";
 
 
@@ -77,12 +78,12 @@ const LoginContainer = () => {
             } else {
                 localStorage.setItem('isLogin', true);
                 dispatch(setLogin(true));
-                navigate('/dashboard')
+                navigate('/panel/dashboard')
             }
         },
     });
     return (
-        <>
+        <LoginSection>
             <LogoDiv>
                 <img src={logoImg} alt="logo" />
             </LogoDiv>
@@ -118,7 +119,7 @@ const LoginContainer = () => {
                 </LoginImage>
             </LoginDiv>
             <ToastContainer />
-        </>
+        </LoginSection>
     );
 }
 

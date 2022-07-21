@@ -4,6 +4,17 @@ import {
     DropdownMenu,
 } from "reactstrap";
 
+export const LoginSection = styled.div`
+    background-color: #1E1E30;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+`
+
 export const LogoDiv = styled.div`
     margin-top: 30px;
     margin-left: 22px;

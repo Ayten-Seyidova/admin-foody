@@ -89,7 +89,7 @@ body {
 
 @media only screen and (max-width: 768px) {
     body {
-        overflow: hidden;
+        overflow-x: hidden;
     }
 
     .right-sidebar {
@@ -132,5 +132,33 @@ body {
 
     .sidebar-btn {
         display: inline !important;
+    }
+}
+
+@media only screen and (max-width: 428px) {
+    .MuiTablePagination-displayedRows {
+        left: 50px;
+        font-size: 10px !important;
+    }
+    
+    .MuiTablePagination-actions {
+        width: 150px;
+        transform: scale(.7);
+    }
+    
+    .MuiSelect-select {
+        width: 35px !important;
+        padding: 4px 12px !important;
+        font-size: 10px !important;
+    }
+    
+    .MuiMenuItem-gutters {
+        padding: 0 0 0 10px !important;
+        font-size: 10px !important;
+    }
+    
+    .MuiTablePagination-selectLabel {
+        right: 46px;
+        font-size: 10px !important;
     }
 }
