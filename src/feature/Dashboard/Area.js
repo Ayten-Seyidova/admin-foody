@@ -9,7 +9,7 @@ class Area extends React.Component {
       series: [
         {
           name: "STOCK ABC",
-          data: [12, 34, 54],
+          data: [12, 34, 59],
         },
       ],
       options: {
@@ -30,11 +30,18 @@ class Area extends React.Component {
         title: {
           text: "Total salary",
           align: "left",
-          color:'white'
+          style: {
+            color: "#C7C7C7",
+            fontSize: "20px",
+          },
         },
         subtitle: {
-          text: "Price Movements",
+          text: "Years",
           align: "left",
+          style: {
+            color: "#8E8E93",
+            fontSize: "16px",
+          },
         },
         labels: [120, 204, 30],
         xaxis: {

@@ -1,10 +1,19 @@
+.charts {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
 .donut {
-  height: 472px;
+  position: absolute;
   width: 472px;
+  height: 472px;
   left: 288px;
   top: 80px;
+
+  background: #27283c;
   border-radius: 14px;
-  background-color: #27283c;
 }
 
 .donut > * {
@@ -28,7 +37,6 @@
   height: 472px;
   left: 288px;
   top: 576px;
-
   background: #27283c;
   border-radius: 14px;
 }

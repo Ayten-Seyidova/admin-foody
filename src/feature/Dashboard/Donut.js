@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
-class App extends Component {
+class Donut extends Component {
   constructor(props) {
     super(props);
 
@@ -10,6 +10,10 @@ class App extends Component {
         labels: ["KFC", "KLM", "American Express"],
         title: {
           text: "Orders",
+          color:'white'
+        },
+        legend: {
+          position: "bottom",
         },
         plotOptions: {
           pie: {
@@ -39,7 +43,7 @@ class App extends Component {
           },
         },
         dataLabels: {
-          enabled: true,
+          enabled: false,
         },
       },
       series: [30, 40, 45],
@@ -52,8 +56,8 @@ class App extends Component {
         <div className="row">
           <div className="mixed-chart">
             <Chart
-              width={472}
-              height={472}
+              width={264}
+              height={264}
               options={this.state.options}
               series={this.state.series}
               type="donut"
@@ -65,4 +69,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Donut;
