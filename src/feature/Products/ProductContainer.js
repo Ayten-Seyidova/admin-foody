@@ -31,7 +31,7 @@ const ProductContainer = () => {
               <div className="trash">
                 <GrTrash />
               </div>
-              <BasicModal className='modal'/>
+              <BasicModal name='product' className='modal'/>
             </div>
           );
         })}
