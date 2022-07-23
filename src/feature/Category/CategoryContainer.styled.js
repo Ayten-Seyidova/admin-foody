@@ -28,3 +28,11 @@ export const TablePaginationStyle = styled(TablePagination)`
   background-color: #1E1E30;
   color: #fff !important;
 `
+
+export const LoadingImage = styled.img`
+   width: 50px;
+   position: absolute;
+   top: 50%;
+   left: 60%;
+   transform: translate(-50%, -50%);
+`

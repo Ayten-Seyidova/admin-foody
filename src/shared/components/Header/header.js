@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from 'react-i18next';
 import { AddProductBtn } from "./AddProductBtn";
 import "./header.css";
@@ -29,8 +29,6 @@ const flags = {
 
 const Header = ({ toggleSidebar }) => {
     const { t, i18n } = useTranslation();
-    const [topbarIsOpen, setTopbarOpen] = useState(true);
-    const toggleTopbar = () => setTopbarOpen(!topbarIsOpen);
 
     const [isOpen, setIsOpen] = React.useState(false);
     const toggle = () => setIsOpen(prevState => !prevState);
@@ -43,8 +41,8 @@ const Header = ({ toggleSidebar }) => {
                 <img src={menuIcon} alt="menu" />
             </Button>
 
-            <Collapse className="d-flex justify-content-end align-items-center" isOpen={topbarIsOpen} >
-                <AddProductBtn name={t('add product')} placement='end' />
+            <Collapse className="d-flex justify-content-end align-items-center">
+                <AddProductBtn name={t('add product')} pagename = 'product' placement='end' />
                 <Dropdown className='lang-btn' isOpen={isOpen} toggle={toggle}>
                     <DropdownToggle><img src={flags[i18n.resolvedLanguage]} alt={flags[i18n.resolvedLanguage]} /></DropdownToggle>
                     <DropdownMenu className='lang-dropdown'>

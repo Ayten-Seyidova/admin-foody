@@ -66,6 +66,20 @@ body {
     right: 70px;
 }
 
+.swal2-confirm {
+    height: 34px !important;
+}
+
+.swal2-styled {
+    padding: 0 20px !important;
+}
+
+.swal2-cancel {
+    color: rgba(189, 189, 189, 1) !important;
+    border: 2px solid rgba(189, 189, 189, 1) !important;
+    height: 34px !important;
+}
+
 * {
     box-sizing: border-box !important;
 }

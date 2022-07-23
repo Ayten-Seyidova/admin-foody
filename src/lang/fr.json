@@ -23,8 +23,9 @@
       "subtitle order delete": "Attention ! Si vous supprimez ce commandes, il ne reviendra pas... ?",
       "subtitle offer delete": "Attention ! Si vous supprimez ce offre, il ne reviendra pas... ?",
       "subtitle category delete": "Attention ! Si vous supprimez ce catégorie, il ne reviendra pas... ?",
-      "delete": "supprimer",
-      "cancel": "annuler",
+      "delete": "Supprimer",
+      "deleted": "Supprimé",
+      "cancel": "Annuler",
       "admin": "Administrateur",
       "no risk":"Il n'y a aucun risque assigné.",
       "menu": {
@@ -45,6 +46,7 @@
         "contact":"Contact",
         "image":"image",
         "upload title":"Téléchargez votre image",
+        "upload-img":"Télécharger une image",
         "form title":"Ajoutez votre description et les informations nécessaires",
         "name" :"Nom",
         "title":"Titre",
@@ -57,7 +59,11 @@
         "category":"Catégorie",
         "restaurants":"Restaurants",
         "slug":"limace",
-        "upload": "Télécharger"
+        "upload": "Télécharger",
+        "create category": "Créer une catégorie",
+        "create restaurant": "Créer un restaurant",
+        "create offer": "Créer une offre",
+        "create product": "Créer un produit"
       }
   
     }

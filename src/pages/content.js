@@ -34,4 +34,3 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => {
 };
 
 export default Content;
-
