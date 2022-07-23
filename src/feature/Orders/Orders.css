@@ -1,0 +1,13 @@
+.orders-header {
+  /* position: absolute; */
+  width: 1108px;
+  height: 73px;
+  left: 300px;
+  top: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  margin-bottom: 30px;
+  background: #27283c;
+  border-radius: 14px;
+}
