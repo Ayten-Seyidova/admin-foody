@@ -1,4 +1,5 @@
-import './Orders.css'
+import TablePaginationDemo from "./TablePaginationDemo";
+import "./Orders.css";
 
 import BasicTable from "./OrderTable";
 
@@ -7,6 +8,7 @@ const OrderContainer = () => {
     <>
       <div className="orders-header">Orders</div>
       <BasicTable />
+      <TablePaginationDemo/>
     </>
   );
 };
