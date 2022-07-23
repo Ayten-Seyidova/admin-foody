@@ -170,6 +170,3 @@ export const CreateBtn = styled.button`
         font-size: 12px;
     }
 `
-
-
-
