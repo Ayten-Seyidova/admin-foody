@@ -6,10 +6,22 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+<<<<<<< CATEGORY-PAGE
 import { CategoryDiv, CategorySpan, CategoryStyled, TablePaginationStyle } from './CategoryContainer.styled';
 import { useTranslation } from 'react-i18next';
 import { AddProductBtn } from '../../shared/components/Header/AddProductBtn';
 import { Image } from 'react-bootstrap';
+=======
+import { CategoryDiv, CategorySpan, CategoryStyled, DeleteImage, LoadingImage, TablePaginationStyle } from './CategoryContainer.styled';
+import { useTranslation } from 'react-i18next';
+import { AddProductBtn } from '../../shared/components/Header/AddProductBtn';
+import { Image } from 'react-bootstrap';
+import { categoryAPI, categoryDeleteAPI } from '../../api/category';
+import DeleteIcon from '../../Image/icon/delete.svg';
+import LoadGif from '../../Image/icon/loading.gif'
+import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+>>>>>>> local
 
 const columns = [
 
@@ -19,10 +31,10 @@ const columns = [
     { id: 'slug', label: 'slug', minWidth: 170, align: 'center' },
 ];
 
-function createData(id, image, name, slug) {
-    return { id, image, name, slug };
-}
+export default function CategoryContainer() {
+    const { t } = useTranslation();
 
+<<<<<<< CATEGORY-PAGE
 const rows = [
     createData('001', 'IN', 1324171354, 3287263),
     createData('002', 'CN', 1403500365, 9596961),
@@ -56,9 +68,48 @@ const rows = [
     createData('030', 'BR', 210147125, 8515767),
     
 ];
+=======
+    const [category, setCategory] = React.useState(null);
 
-export default function CategoryContainer() {
-    const { t } = useTranslation();
+    React.useEffect(() => {
+        getCategory();
+    }, []);
+
+    const getCategory = () => {
+        categoryAPI
+            .then((res) => {
+                setCategory(res.data.category);
+            })
+            .catch((err) => { });
+    };
+
+    const deleteCateory = (id) => {
+        Swal.fire({
+            title: t('title delete'),
+            text: t('subtitle category delete'),
+            showCancelButton: true,
+            cancelButtonColor: 'transparent',
+            cancelButtonText: t('cancel'),
+            confirmButtonColor: '#D63626',
+            confirmButtonText: t('delete'),
+        }).then((result) => {
+            if (result.isConfirmed) {
+                categoryDeleteAPI(id)
+                    .then((res) => {
+                        let newArray = [...category].filter((categoryItem) => categoryItem.id !== id);
+                        setCategory(newArray);
+                    })
+                    .catch(() => { });
+                toast.success(t("deleted"), {
+                    autoClose: 1000,
+                    pauseOnHover: true,
+                });
+            }
+        })
+
+    };
+>>>>>>> local
+
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -71,11 +122,15 @@ export default function CategoryContainer() {
         setPage(0);
     };
 
+    if (!category) {
+        return <LoadingImage src={LoadGif} />;
+    }
+
     return (
         <CategoryStyled>
             <CategoryDiv>
                 <CategorySpan>{t('menu.category')}</CategorySpan>
-                <AddProductBtn name={t('add category')} placement='end' />
+                <AddProductBtn name={t('add category')} pagename='category' placement='end' />
             </CategoryDiv>
 
             <Paper sx={{ width: '100%', boxShadow: "none" }}>
@@ -91,11 +146,16 @@ export default function CategoryContainer() {
                                         {t(`form.`+column.label).toUpperCase()}
                                     </TableCell>
                                 ))}
+<<<<<<< CATEGORY-PAGE
+=======
+                                <TableCell align={"right"}
+                                    cellwidth={"20"}></TableCell>
+>>>>>>> local
                             </TableRow>
                         </TableHead>
                         <TableBody>
 
-                            {rows
+                            {category
                                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => {
                                     return (
@@ -105,11 +165,18 @@ export default function CategoryContainer() {
                                                 return (
                                                     <TableCell key={column.id} align={column.align}>
                                                         {column.id === 'image'
-                                                            ? <Image height="45" src={value} />
+                                                            ? <Image width="60" className='rounded' src={value} />
                                                             : value.length > 30 ? `${value.slice(0, 30)}...` : value}
                                                     </TableCell>
                                                 );
                                             })}
+<<<<<<< CATEGORY-PAGE
+=======
+
+                                            <TableCell key={row.id} align={"right"} >
+                                                <DeleteImage onClick={() => deleteCateory(row.id)} src={DeleteIcon} />
+                                            </TableCell>
+>>>>>>> local
                                         </TableRow>
                                     );
                                 })}
@@ -117,15 +184,16 @@ export default function CategoryContainer() {
                     </Table>
                 </TableContainer>
                 <TablePaginationStyle
-                    rowsPerPageOptions={[10, 25, 100]}
+                    rowsPerPageOptions={[10, 25, 50]}
                     component="div"
-                    count={rows.length}
+                    count={category?.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Paper>
+            <ToastContainer />
         </CategoryStyled>
     );
 }

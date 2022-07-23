@@ -17,14 +17,15 @@
       "success_message":"Əməliyyat uğurludur!",
       "create": "yarat",
       "add offer": "təklif əlavə et",
-      "title delete": "Silindiyinizə əminsinizmi?",
+      "title delete": "Silmək istədiyinizə əminsinizmi?",
       "subtitle product delete": "Diqqət! Bu məhsulu silsəniz, geri qayıtmayacaq!",
       "subtitle restaurants delete": "Diqqət! Bu restoranı silsəniz, geri qayıtmayacaq!",
       "subtitle order delete": "Diqqət! Bu sifarişi silsəniz, geri qayıtmayacaq!",
       "subtitle offer delete": "Diqqət! Bu təklifi silsəniz, geri qayıtmayacaq!",
       "subtitle category delete": "Diqqət! Bu kateqoriyanı silsəniz, geri qayıtmayacaq!",
-      "delete": "sil",
-      "cancel": "ləğv et",
+      "delete": "Sil",
+      "deleted": "Silindi",
+      "cancel": "Ləğv et",
       "admin": "Admin",
       "no risk":"Heç bir risk təyin edilməyib.",
       "menu": {
@@ -45,6 +46,7 @@
         "contact":"Əlaqə",
         "image":"şəkil",
         "upload title":"Şəkilinizi yükləyin",
+        "upload-img":"Şəkil yüklə",
         "form title":"Təsvirinizi və lazımi məlumatları əlavə edin",
         "name":"Ad",
         "title":"Başlıq",
@@ -57,7 +59,12 @@
         "category":"Kateqoriya",
         "restaurants":"Restoranlar",
         "slug":"Link başlığı",
-        "upload":"Yüklə"
+        "upload":"Yüklə",
+        "create category": "Kateqoriya yarat",
+        "create restaurant": "Restoran yarat",
+        "create offer": "Təklif yarat",
+        "create product": "Məhsul yarat"
+
       }
     }
   }

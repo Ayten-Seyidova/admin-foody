@@ -25,6 +25,17 @@ export const TablePaginationStyle = styled(TablePagination)`
   /* justify-content: space-between; */
   background-color: #1E1E30;
   color: #fff !important;
+<<<<<<< CATEGORY-PAGE
   /* box-shadow: none !important; */
   /* flex-direction: row-reverse; */
+=======
+`
+
+export const LoadingImage = styled.img`
+   width: 50px;
+   position: absolute;
+   top: 50%;
+   left: 60%;
+   transform: translate(-50%, -50%);
+>>>>>>> local
 `
