@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { Container } from "reactstrap";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Products from "./Products";
 import Restaurants from "./Restaurants";
@@ -10,6 +10,7 @@ import Orders from "./Orders";
 import Offer from "./Offer";
 import Header from "../shared/components/Header/header";
 import Page404 from "./404";
+import Login from "./Login";
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => {
     return (
@@ -19,18 +20,17 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => {
             <Header toggleSidebar={toggleSidebar} />
 
             <Routes toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen}>
-                <Route path="*" element={<Navigate replace to="/dashboard" />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/restaurants" element={<Restaurants />} />
-                <Route path="/category" element={<Category />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/offer" element={<Offer />} />
-                <Route path="/error" element={<Page404 />} />
+                <Route path="/panel/dashboard" element={<Dashboard />} />
+                <Route path="/panel/products" element={<Products />} />
+                <Route path="/panel/restaurants" element={<Restaurants />} />
+                <Route path="/panel/category" element={<Category />} />
+                <Route path="/panel/orders" element={<Orders />} />
+                <Route path="/panel/offer" element={<Offer />} />
+                <Route path="*" element={<Page404 />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </Container>
     )
 };
 
 export default Content;
-

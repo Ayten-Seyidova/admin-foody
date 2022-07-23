@@ -20,15 +20,13 @@ export const CategorySpan = styled.span`
     color: rgba(242, 242, 242, 0.87);
 `
 
+export const DeleteImage = styled.img`
+   cursor: pointer;
+`
+
 export const TablePaginationStyle = styled(TablePagination)`
-  /* display: flex; */
-  /* justify-content: space-between; */
   background-color: #1E1E30;
   color: #fff !important;
-<<<<<<< CATEGORY-PAGE
-  /* box-shadow: none !important; */
-  /* flex-direction: row-reverse; */
-=======
 `
 
 export const LoadingImage = styled.img`
@@ -37,5 +35,4 @@ export const LoadingImage = styled.img`
    top: 50%;
    left: 60%;
    transform: translate(-50%, -50%);
->>>>>>> local
 `

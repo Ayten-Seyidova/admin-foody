@@ -6,6 +6,7 @@ import Content from "./content";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Login from "./Login";
 import { useSelector } from "react-redux";
+import PageAuth from "./AuthError";
 
 const Pages = () => {
     const [sidebarIsOpen, setSidebarOpen] = useState(true);
@@ -27,7 +28,8 @@ const Pages = () => {
             ) : (
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route path="*" element={<Navigate replace to="login" />} />
+                    <Route path="/" element={<Navigate replace to="login" />} />
+                    <Route path="*" element={<PageAuth />} />
                 </Routes>
             )}
         </>

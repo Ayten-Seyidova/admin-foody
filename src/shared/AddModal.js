@@ -1,10 +1,3 @@
-<<<<<<< CATEGORY-PAGE
-export const AddModal = () => {
-    return ( 
-        <>
-            Your code is here...
-        </> 
-=======
 import { useTranslation } from 'react-i18next';
 import { AddData, BtnDiv, CancelBtn, CreateBtn, DataDiv, DataInput, DataLabel, ImageDiv, ImageIconSection, ImageInput, ImageSpan, ImageTitle, ImageUpload, ModalDiv } from "./AddModal.styled";
 import UploadIcon from '../Image/icon/upload.svg';
@@ -19,7 +12,7 @@ export const AddModal = (props) => {
                 <ImageUpload>
                     <ImageInput type="file" />
                     <ImageIconSection>
-                        <img src={UploadIcon} />
+                        <img src={UploadIcon} alt="upload"/>
                         <ImageSpan>{t('form.upload')}</ImageSpan>
                     </ImageIconSection>
                 </ImageUpload>
@@ -38,6 +31,5 @@ export const AddModal = (props) => {
                 <CreateBtn>{t('form.'+props.createname)}</CreateBtn>
             </BtnDiv>
         </ModalDiv>
->>>>>>> local
     );
 }
