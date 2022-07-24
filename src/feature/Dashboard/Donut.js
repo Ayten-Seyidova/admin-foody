@@ -1,3 +1,4 @@
+import { style } from "@mui/system";
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
@@ -8,40 +9,23 @@ class Donut extends Component {
     this.state = {
       options: {
         labels: ["KFC", "KLM", "American Express"],
+        // colors: ["#447b40", "#cc7870", "#e74ce4"],
         title: {
           text: "Orders",
-          color:'white'
+          style: { color: "#C7C7C7", fontSize: "20px" },
         },
         legend: {
           position: "bottom",
         },
-        plotOptions: {
-          pie: {
-            donut: {
-              labels: {
-                show: true,
-                // color: "#000",
-                name: {
-                  show: true,
-                  fontSize: "16px",
-                  color: undefined,
-                  fontWeight: "bold",
-                },
-                value: { show: false },
-                total: {
-                  label: "Projects by account",
-                  show: true,
-                  showAlways: true,
-                  color: "grey",
-                  fontSize: "16px",
-                  // style: {
-                  //   color: "red",
-                  // },
-                },
-              },
-            },
-          },
-        },
+        // plotOptions: {
+        //   pie: {
+        //     donut: {
+        //       labels: {
+        //         value: { show: true },
+        //       },
+        //     },
+        //   },
+        // },
         dataLabels: {
           enabled: false,
         },
@@ -56,8 +40,8 @@ class Donut extends Component {
         <div className="row">
           <div className="mixed-chart">
             <Chart
-              width={264}
-              height={264}
+              width={450}
+              height={450}
               options={this.state.options}
               series={this.state.series}
               type="donut"

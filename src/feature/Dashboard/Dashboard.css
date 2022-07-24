@@ -2,22 +2,27 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 
 .donut {
-  position: absolute;
   width: 472px;
   height: 472px;
-  left: 288px;
-  top: 80px;
-
   background: #27283c;
   border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
-.donut > * {
-  padding: 50px;
+.donut-header {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #c7c7c7;
+  text-align: center;
+  width: 136px;
+  height: 48px;
 }
 
 .area {
