@@ -7,7 +7,7 @@ const DashboardContainer = () => {
     <div className="charts">
       <div className="donut">
         {<Donut />}
-        <div className="donut-header">Projects by account</div>
+        <div className="donut-header">Projects by accounts</div>
       </div>
       <div className="area">{<Area />}</div>
       <div className="risk"></div>
