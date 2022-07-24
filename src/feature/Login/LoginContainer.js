@@ -43,6 +43,7 @@ const LoginContainer = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(prevState => !prevState);
     const state = useSelector((state) => state);
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const formik = useFormik({

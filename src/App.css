@@ -68,6 +68,7 @@ body {
 
 .swal2-confirm {
     height: 34px !important;
+    box-shadow: none !important;
 }
 
 .swal2-styled {

@@ -1,10 +1,5 @@
-// import axios from "axios";
 import { Axios, AxiosMockCreate } from "../../mocks";
 import categoryData from "../../mocks/category/category.json";
-
-// AxiosMockCreate.onGet("/category").reply(200, {
-//   category: categoryData,
-// });
 
 AxiosMockCreate.onGet("/category").reply((configAxiosMockCreate) => {
   return new Promise((resolve, reject) => {
@@ -34,9 +29,3 @@ AxiosMockCreate.onDelete(/\/category\/\d+/).reply((config) => {
 export const categoryAPI = Axios.get("/category");
 export const categoryDeleteAPI = (id) => Axios.delete(`/category/${id}`);
 export const categoryCreateAPI = (item) => Axios.post(`/category`, item);
-
-// export const categoryDeleteAPI = (id) => axios.delete(`http:/www.omdbapi.com/category/?apikey=a407a7b3&${id}`);
-
-//   export const categoryAPI = axios.get(
-//     "http://www.omdbapi.com/?apikey=a407a7b3&/category"
-//    );
