@@ -1,0 +1,58 @@
+.charts {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.donut {
+  width: 472px;
+  height: 472px;
+  background: #27283c;
+  border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.donut-header {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #c7c7c7;
+  text-align: center;
+  width: 136px;
+  height: 48px;
+}
+
+.area {
+  position: absolute;
+  width: 634px;
+  height: 472px;
+  left: 790px;
+  top: 82px;
+
+  background: #27283c;
+  border-radius: 14px;
+}
+
+.risk {
+  position: absolute;
+  width: 636px;
+  height: 472px;
+  left: 288px;
+  top: 576px;
+  background: #27283c;
+  border-radius: 14px;
+}
+
+.risk2 {
+  position: absolute;
+  width: 472px;
+  height: 472px;
+  left: 952px;
+  top: 576px;
+
+  background: #27283c;
+  border-radius: 14px;
+}
