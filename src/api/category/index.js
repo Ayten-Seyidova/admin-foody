@@ -1,7 +1,7 @@
 import { Axios, AxiosMockCreate } from "../../mocks";
 import categoryData from "../../mocks/category/category.json";
 
-AxiosMockCreate.onGet("/category").reply((configAxiosMockCreate) => {
+AxiosMockCreate.onGet("/category").reply(() => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve([200, { category: categoryData }]);
@@ -10,7 +10,6 @@ AxiosMockCreate.onGet("/category").reply((configAxiosMockCreate) => {
 });
 
 AxiosMockCreate.onPost("/category").reply((config) => {
-  console.log("config", config);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve([201, { message: "Created", result: JSON.parse(config.data) }]);
@@ -18,7 +17,7 @@ AxiosMockCreate.onPost("/category").reply((config) => {
   });
 });
 
-AxiosMockCreate.onDelete(/\/category\/\d+/).reply((config) => {
+AxiosMockCreate.onDelete(/\/category\/\d+/).reply(() => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve([200, { message: "Success" }]);

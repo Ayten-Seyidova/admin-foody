@@ -64,7 +64,8 @@ class Area extends React.Component {
           options={this.state.options}
           series={this.state.series}
           type="area"
-          height={350}
+          height={400}
+          width={560}
         />
       </div>
     );
