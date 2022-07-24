@@ -9,7 +9,6 @@ class Donut extends Component {
     this.state = {
       options: {
         labels: ["KFC", "KLM", "American Express"],
-        // colors: ["#447b40", "#cc7870", "#e74ce4"],
         title: {
           text: "Orders",
           style: { color: "#C7C7C7", fontSize: "20px" },
@@ -17,15 +16,6 @@ class Donut extends Component {
         legend: {
           position: "bottom",
         },
-        // plotOptions: {
-        //   pie: {
-        //     donut: {
-        //       labels: {
-        //         value: { show: true },
-        //       },
-        //     },
-        //   },
-        // },
         dataLabels: {
           enabled: false,
         },
