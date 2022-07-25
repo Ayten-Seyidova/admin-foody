@@ -1,4 +1,4 @@
-import BasicModal from "../Products/BasicModal";
+// import BasicModal from "../Products/BasicModal";
 import "./Restaurants.css";
 
 const RestaurantContainer = () => {
@@ -26,7 +26,6 @@ const RestaurantContainer = () => {
             <div className="rest-info">
               <div className="rest-name">{restaurant.name}</div>
               <div className="rest-cat">{restaurant.category}</div>
-              <BasicModal name='restaurant' className='modal'/>
             </div>
           </div>
         ))}

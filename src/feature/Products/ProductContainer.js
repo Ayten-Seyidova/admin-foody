@@ -1,43 +1,176 @@
-import "./Products.css";
-import { GrTrash } from "react-icons/gr";
-import BasicModal from "./BasicModal";
+import * as React from "react";
+import TableContainer from "@mui/material/TableContainer";
+import {
+  ProductDiv,
+  ProductSpan,
+  ProductStyled,
+  LoadingImage,
+  TablePaginationStyle,
+  ProductImage,
+  ProductImageContainer,
+} from "./ProductContainer.styled";
+import { useTranslation } from "react-i18next";
+import { AddProductBtn } from "../../shared/components/Header/AddProductBtn";
+import LoadGif from "../../Image/icon/loading.gif";
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import DeleteIcon from "../../Image/icon/delete.svg";
+import { CardContent, Grid, Typography } from "@mui/material";
+import { productsAPI, productsDeleteAPI } from "../../api/products";
 
-const ProductContainer = () => {
-  const products = new Array(10).fill({
-    name: "Marqarita",
-    price: "$ 16",
-    res: "Papa John's",
-  });
+export default function ProductContainer() {
+  const { t } = useTranslation();
+
+  const [products, setProducts] = React.useState(null);
+
+  React.useEffect(() => {
+    getProduct();
+  }, []);
+
+  const getProduct = () => {
+    productsAPI
+      .then((res) => {
+        setProducts(res.data.products);
+      })
+      .catch((err) => {});
+  };
+
+  const deleteProduct = (id) => {
+    Swal.fire({
+      title: t("title delete"),
+      text: t("subtitle product delete"),
+      showCancelButton: true,
+      cancelButtonColor: "transparent",
+      cancelButtonText: t("cancel"),
+      confirmButtonColor: "#D63626",
+      confirmButtonText: t("delete"),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        productsDeleteAPI(id)
+          .then((res) => {
+            let newArray = [...products].filter((item) => item.id !== id);
+            setProducts(newArray);
+          })
+          .catch(() => {});
+        toast.success(t("The operation is succesful!"), {
+          autoClose: 1000,
+          pauseOnHover: true,
+        });
+      }
+    });
+  };
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  if (!products) {
+    return <LoadingImage src={LoadGif} alt="loading" />;
+  }
 
   return (
-    <>
-      <div>
-        <input className="search" placeholder="Products"></input>
-      </div>
+    <ProductStyled>
+      <ProductDiv>
+        <ProductSpan>{t("menu.products")}</ProductSpan>
+        <AddProductBtn
+          name={t("add product")}
+          pagename="products"
+          placement="end"
+        />
+      </ProductDiv>
 
-      <div className="product-cards">
-        {products.map((product, index) => {
+      <TableContainer
+        sx={{
+          width: "100%",
+          height: "500px",
+          background: "inherit",
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        {products.map((item) => {
           return (
-            <div className="card" key={index}>
-              <img
-                className="product-img"
-                src="https://pizza.az/upload/resize_cache/iblock/289/359_355_040cd750bba9870f18aada2478b24840a/2890847e94a8213ae597264ff6bba032.jpg"
-                alt="pizza"
-              />
-              <p className="product-name">{product.name}</p>
-              <p className="product-rest">{product.res}</p>
-              <p className="product-price">{product.price}</p>
-
-              <div className="trash">
-                <GrTrash />
-              </div>
-              <BasicModal name='product' className='modal'/>
-            </div>
+            <Grid
+              key={item.id}
+              sx={{
+                width: 196,
+                height: 273,
+                background: "#FFFFFF",
+                boxShadow: "0px 4px 4px rgba(57, 57, 57, 0.25)",
+                borderRadius: "5px",
+                marginRight: 3,
+                marginBottom: 3,
+              }}
+            >
+              <ProductImageContainer>
+                <ProductImage src={item.image} alt={item.product_name} />
+              </ProductImageContainer>
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  sx={{ color: "#1E1E30", fontSize: 18 }}
+                >
+                  {item.product_name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="#8E8E93"
+                  sx={{ fontSize: 14 }}
+                >
+                  {item.restaurant_name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="#00B2A9"
+                  sx={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                  }}
+                >
+                  <div
+                    style={{
+                      justifyContent: "space-between",
+                      backgroundColor: "white",
+                      display: "flex",
+                      alignItems: "center",
+                      marginTop: 10,
+                    }}
+                  >
+                    <p>${item.product_price}</p>
+                    <img
+                      size="small"
+                      onClick={() => deleteProduct(item.id)}
+                      src={DeleteIcon}
+                      style={{ position: "inherit" }}
+                      alt="dcdc"
+                    />
+                  </div>
+                </Typography>
+              </CardContent>
+            </Grid>
           );
         })}
-      </div>
-    </>
+      </TableContainer>
+      <TablePaginationStyle
+        rowsPerPageOptions={[10, 25, 50]}
+        component="div"
+        count={products?.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+      <ToastContainer />
+    </ProductStyled>
   );
-};
-
-export default ProductContainer;
+}
