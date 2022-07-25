@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import plusIcon from '../../../Image/icon/plus.svg';
-import { AddModal } from "../../AddModal";
+import { CategoryModal } from "../../CategoryModal";
+import { ProductModal } from "../../ProductModal";
 
 
 export function AddProductBtn({ name, pagename, ...props }) {
@@ -21,7 +22,12 @@ export function AddProductBtn({ name, pagename, ...props }) {
                     <Offcanvas.Title>{name.charAt(0).toUpperCase() + name.slice(1)}</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <AddModal createname={'create ' + pagename} closeFunc={handleClose} />
+                    {
+                        {
+                            'product': <ProductModal createname={'create ' + pagename} closeFunc={handleClose} />,
+                            'category': <CategoryModal createname={'create ' + pagename} closeFunc={handleClose} />
+                        }[pagename]
+                    }
                 </Offcanvas.Body>
             </Offcanvas>
         </>

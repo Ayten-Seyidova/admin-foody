@@ -15,9 +15,11 @@ import DeleteIcon from '../../Image/icon/delete.svg';
 import LoadGif from '../../Image/icon/loading.gif'
 import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
+import './Category.css';
+import {useDispatch, useSelector} from 'react-redux';
+import { setCategory } from '../../store/slice/categorySlice';
 
 const columns = [
-
     { id: 'id', label: 'id', minWidth: 100, align: 'center', },
     { id: 'image', label: 'image', minWidth: 100, align: 'center' },
     { id: 'name', label: 'name', minWidth: 170, align: 'center' },
@@ -27,7 +29,8 @@ const columns = [
 export default function CategoryContainer() {
     const { t } = useTranslation();
 
-    const [category, setCategory] = React.useState(null);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state)
 
     React.useEffect(() => {
         getCategory();
@@ -36,7 +39,7 @@ export default function CategoryContainer() {
     const getCategory = () => {
         categoryAPI
             .then((res) => {
-                setCategory(res.data.category);
+               dispatch(setCategory(res.data.category));
             })
             .catch((err) => { });
     };
@@ -54,8 +57,8 @@ export default function CategoryContainer() {
             if (result.isConfirmed) {
                 categoryDeleteAPI(id)
                     .then((res) => {
-                        let newArray = [...category].filter((categoryItem) => categoryItem.id !== id);
-                        setCategory(newArray);
+                        let newArray = [...state.categorySlice.data].filter((categoryItem) => categoryItem.id !== id);
+                        dispatch(setCategory(newArray));
                     })
                     .catch(() => { });
                 toast.success(t("deleted"), {
@@ -80,7 +83,7 @@ export default function CategoryContainer() {
         setPage(0);
     };
 
-    if (!category) {
+    if (!state.categorySlice.data[0]) {
         return <LoadingImage src={LoadGif} alt="loading" />;
     }
 
@@ -110,7 +113,7 @@ export default function CategoryContainer() {
                         </TableHead>
                         <TableBody>
 
-                            {category
+                            {state.categorySlice.data
                                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => {
                                     return (
@@ -138,7 +141,7 @@ export default function CategoryContainer() {
                 <TablePaginationStyle
                     rowsPerPageOptions={[10, 25, 50]}
                     component="div"
-                    count={category?.length}
+                    count={state.categorySlice.data?.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}

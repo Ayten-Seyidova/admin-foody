@@ -63,7 +63,10 @@
         "create category": "Create category",
         "create restaurant": "Create restaurant",
         "create offer": "Create offer",
-        "create product": "Create product"
+        "create product": "Create product",
+        "name-required": "Name is required",
+        "image-required": "Image is required",
+        "added": "Successfully added"
       }
     }
   }

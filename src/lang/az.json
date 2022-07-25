@@ -63,8 +63,10 @@
         "create category": "Kateqoriya yarat",
         "create restaurant": "Restoran yarat",
         "create offer": "Təklif yarat",
-        "create product": "Məhsul yarat"
-
+        "create product": "Məhsul yarat",
+        "name-required": "Ad tələb olunur",
+        "added": "Uğurla əlavə edildi",
+        "image-required": "Şəkil tələb olunur"
       }
     }
   }

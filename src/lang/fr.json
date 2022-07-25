@@ -63,8 +63,10 @@
         "create category": "Créer une catégorie",
         "create restaurant": "Créer un restaurant",
         "create offer": "Créer une offre",
-        "create product": "Créer un produit"
+        "create product": "Créer un produit",
+        "name-required": "Le nom est requis",
+        "added": "Ajouté avec succès",
+        "image-required": "L'image est requise"
       }
-  
     }
   }
