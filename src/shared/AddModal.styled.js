@@ -15,7 +15,33 @@ export const ImageDiv = styled.div`
         display: block;
     }
 `
-export const ImageTitle = styled.span`
+export const ImageTitle = styled.div`
+
+    flex: 4;
+    padding-right: 40px;
+    @media (max-width: 992px) {
+        flex: 10;
+        margin-bottom: 10px;
+        display: block;
+        padding-right: 0;
+    }
+`
+
+export const ImageTitleText = styled.span`
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(199, 199, 199, 1);
+`
+
+export const ImagePreview = styled.img`
+    border-radius: 10px;
+    display: block;
+    margin-top: 20px;
+    height: 60px;
+`
+
+export const DataTitle = styled.span`
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
@@ -169,4 +195,17 @@ export const CreateBtn = styled.button`
         padding: 10px 0 8px 0;
         font-size: 12px;
     }
+`
+
+export const ErrorText = styled.div`
+    font-size: 13px;
+    color: red;
+    margin-top: -15px;
+    margin-left: 20px;
+`
+export const ImageText = styled.div`
+    font-size: 13px;
+    color: red;
+    margin-top: 10px;
+    margin-left: 20px;
 `
