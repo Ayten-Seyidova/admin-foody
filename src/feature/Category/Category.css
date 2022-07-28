@@ -1,71 +1,71 @@
 .MuiTableCell-root {
-    z-index: 0 !important;
+  z-index: 0 !important;
 }
 
 .MuiToolbar-root {
-    position: relative;
-    margin-top: 30px;
+  position: relative;
+  margin-top: 30px;
 }
 
 .MuiTablePagination-displayedRows {
-    position: absolute;
-    left: 45px;
-    margin-bottom: 0;
+  position: absolute;
+  left: 45px;
+  margin-bottom: 0;
 }
 
 .MuiTablePagination-actions {
-    position: absolute;
-    left: 0;
-    width: 170px;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 0  !important;
+  position: absolute;
+  left: 0;
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0 !important;
 }
 
 .MuiButtonBase-root {
-    padding: 0 !important;
-    background-image: url("/src/Image/icon/left.svg");
-    border-radius: 0 !important;
-    width: 35px;
-    height: 35px;
-    background-repeat: no-repeat;
-    color: #FCDDEC !important;
+  padding: 0 !important;
+  background-image: url("/src/Image/icon/left.svg");
+  border-radius: 0 !important;
+  width: 35px;
+  height: 35px;
+  background-repeat: no-repeat;
+  color: #fcddec !important;
 }
 
 .MuiSelect-select {
-    position: absolute;
-    right: -30px;
-    background-color: #fff !important;
-    color: #00072B !important;
-    width: 60px !important;
-    padding: 6px 16px !important;
+  position: absolute;
+  right: -30px;
+  background-color: #fff !important;
+  color: #00072b !important;
+  width: 60px !important;
+  padding: 6px 16px !important;
 }
 
 .MuiMenuItem-gutters {
-    background-image: none;
-    color: #00072B !important;
-    width: auto;
-    height: auto;
-    padding: 6px 16px !important;
+  background-image: none;
+  color: #00072b !important;
+  width: auto;
+  height: auto;
+  padding: 6px 16px !important;
 }
 
 .MuiTablePagination-selectLabel {
-    margin-bottom: 0;
-    position: absolute;
-    right: 70px;
+  margin-bottom: 0;
+  position: absolute;
+  right: 70px;
 }
 
 .swal2-confirm {
-    height: 34px !important;
-    box-shadow: none !important;
+  height: 34px !important;
+  box-shadow: none !important;
 }
 
 .swal2-styled {
-    padding: 0 20px !important;
+  padding: 0 20px !important;
 }
 
 .swal2-cancel {
-    color: rgba(189, 189, 189, 1) !important;
-    border: 2px solid rgba(189, 189, 189, 1) !important;
-    height: 34px !important;
+  color: rgba(189, 189, 189, 1) !important;
+  border: 2px solid rgba(189, 189, 189, 1) !important;
+  height: 34px !important;
 }

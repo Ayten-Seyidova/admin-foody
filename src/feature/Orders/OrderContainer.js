@@ -15,7 +15,6 @@ import {
   TablePaginationStyle,
 } from "./OrderContainer.styled";
 import { useTranslation } from "react-i18next";
-import { AddProductBtn } from "../../shared/components/Header/AddProductBtn";
 import { Image } from "react-bootstrap";
 import DeleteIcon from "../../Image/icon/delete.svg";
 import LoadGif from "../../Image/icon/loading.gif";
@@ -77,7 +76,7 @@ export default function OrderContainer() {
   };
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -96,7 +95,6 @@ export default function OrderContainer() {
     <OrdersStyled>
       <OrdersDiv>
         <OrdersSpan>{t("menu.orders")}</OrdersSpan>
-        <AddProductBtn name={t("add order")} pagename="order" placement="end" />
       </OrdersDiv>
 
       <Paper sx={{ width: "100%", boxShadow: "none" }}>

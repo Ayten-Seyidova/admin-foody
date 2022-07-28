@@ -93,7 +93,7 @@ export default function OfferContainer() {
     <OffersStyled>
       <OffersDiv>
         <OffersSpan>{t("menu.offers")}</OffersSpan>
-        <AddProductBtn name={t("add offer")} pagename="offer" placement="end" />
+        <AddProductBtn name={t("add offer")} pagename="offers" placement="end" />
       </OffersDiv>
 
       <Paper sx={{ width: "100%", boxShadow: "none" }}>

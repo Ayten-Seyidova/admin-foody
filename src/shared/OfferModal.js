@@ -22,14 +22,13 @@ import {
   ImagePreview,
 } from "./AddModal.styled";
 import UploadIcon from "../Image/icon/upload.svg";
-import { categoryCreateAPI } from "../api/category";
+import { offersCreateAPI } from "../api/offers";
 import { useFormik } from "formik";
-import slugify from "react-slugify";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../store/slice/categorySlice";
+import { setOffers } from "../store/slice/offersSlice";
 import { ToastContainer, toast } from "react-toastify";
 
-export const CategoryModal = (props) => {
+export const OfferModal = (props) => {
   const { t } = useTranslation();
   const [file, setFile] = React.useState();
 
@@ -42,41 +41,39 @@ export const CategoryModal = (props) => {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const generateSlug = () => {
-    let inputName = formik.values.name;
-    let slug = slugify(inputName);
-    formik.values.slug = slug;
-    return slug;
-  };
 
   const formik = useFormik({
     initialValues: {
       image: "",
-      name: "",
-      slug: "",
+      title: "",
+      description: "",
     },
     validate: (values) => {
       let errors = {};
       if (!values.image) {
         errors.image = t("form.image-required");
       }
-      if (!values.name) {
-        errors.name = t("form.name-required");
+      if (!values.title) {
+        errors.title = t("form.title-required");
+      }
+      if (!values.description) {
+        errors.description = t("form.description-required");
       }
       return errors;
     },
     onSubmit: (values) => {
-      let id = state.categorySlice.data.slice(-1)[0].id + 1;
+      // let id = state.offersSlice.data.slice(-1)[0].id + 1;
       let item = {
-        id: id,
-        image: values.image,
-        name: values.name,
-        slug: values.slug,
+        id: "12",
+        image:
+          "https://i.picsum.photos/id/699/200/300.jpg?hmac=s68cvOJXxl4ZvaOM6PpveL8klBiaViC9Nbi02oETt5k",
+        title: values.title,
+        description: values.description,
       };
-      categoryCreateAPI(item)
+      offersCreateAPI(item)
         .then((res) => {
-          let newArray = [...state.categorySlice.data, item];
-          dispatch(setCategory(newArray));
+          let newArray = [...state.offersSlice.data, item];
+          dispatch(setOffers(newArray));
         })
         .catch(() => {});
       toast.success(t("form.added"), {
@@ -113,29 +110,30 @@ export const CategoryModal = (props) => {
           </ImageUpload>
         </ImageDiv>
         <DataDiv>
-          <DataTitle>{t("form.form title")}</DataTitle>
+          <DataTitle>{t("form.offer title")}</DataTitle>
           <AddData>
-            <DataLabel>{t("form.name")}</DataLabel>
+            <DataLabel>{t("form.title")}</DataLabel>
             <DataInput
               placeholder="Soup"
-              id="name"
-              name="name"
+              id="title"
+              name="title"
               type="text"
               onChange={formik.handleChange}
-              onKeyDown={() => generateSlug()}
-              value={formik.values.name || ""}
+              value={formik.values.title || ""}
             />
-            {formik.errors.name && <ErrorText>{formik.errors.name}</ErrorText>}
-            <DataLabel>{t("form.slug")}</DataLabel>
+            {formik.errors.title && <ErrorText>{formik.errors.title}</ErrorText>}
+            <DataLabel>{t("form.description")}</DataLabel>
             <DataInput
-              placeholder="yummy-soup"
-              id="slug"
-              name="slug"
-              type="text"
+              placeholder="description"
+              id="description"
+              name="description"
+              type="textarea"
               onChange={formik.handleChange}
-              value={generateSlug()}
-              disabled
+              value={formik.values.description || ""}
             />
+            {formik.errors.description && (
+              <ErrorText>{formik.errors.description}</ErrorText>
+            )}
           </AddData>
         </DataDiv>
 

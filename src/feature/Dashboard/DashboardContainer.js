@@ -2,23 +2,31 @@ import Area from "./Area";
 import Donut from "./Donut";
 import "./Dashboard.css";
 import Risk from "./Risk";
+import { useTranslation } from "react-i18next";
 
 const DashboardContainer = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="charts">
       <div className="donut">
-        {<Donut />}
-        <div className="donut-header">Projects by account</div>
+        {<Donut name={t("dashboard.donuts-name")} />}
+        <div className="donut-header">{t("dashboard.donut-description")}</div>
       </div>
       <div className="area">{<Area />}</div>
       <div className="risk">
-        {<Risk name="Assigned Risks" desc="There are no risks assigned." />}
+        {
+          <Risk
+            name={t("dashboard.assigned-risks")}
+            desc={t("dashboard.no-risks")}
+          />
+        }
       </div>
       <div className="risk2">
         {
           <Risk
-            name="Assigned action items"
-            desc="There are no action items assigned."
+            name={t("dashboard.assigned-action-items")}
+            desc={t("dashboard.no-items")}
           />
         }
       </div>
