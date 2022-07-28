@@ -23,30 +23,29 @@ import {
   DataSelect,
 } from "./AddModal.styled";
 import UploadIcon from "../Image/icon/upload.svg";
-import { productsCreateAPI } from "../api/products";
+import { restaurantCreateAPI } from "../api/restaurant";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../store/slice/productsSlice";
+import { setRestaurant } from "../store/slice/restaurantSlice";
 import { ToastContainer, toast } from "react-toastify";
-import { restaurantAPI } from "../api/restaurant";
+import { categoryAPI } from "../api/category";
 
-export const ProductModal = (props) => {
+export const RestaurantModal = (props) => {
   const { t } = useTranslation();
   const [file, setFile] = React.useState();
-
-  const [restaurants, setRestaurants] = React.useState(null);
+  const [category, setCategory] = React.useState(null);
 
   React.useEffect(() => {
-    getRestaurant();
+    getCategory();
   }, []);
 
-  const getRestaurant = () => {
-    restaurantAPI
-      .then((res) => {
-        setRestaurants(res.data.restaurant);
-      })
-      .catch((err) => {});
-  };
+  function getCategory() {
+    categoryAPI.then((res) => {
+      setCategory(res.data.category);
+    });
+  }
+
+  const catlist = [...new Set(category?.map((cat) => cat.name))];
 
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
@@ -62,9 +61,11 @@ export const ProductModal = (props) => {
     initialValues: {
       image: "",
       name: "",
-      description: "",
-      price: "",
-      restaurants: "",
+      cuisine: "",
+      delivery_price: "",
+      delivery_min: "",
+      address: "",
+      category: "",
     },
     validate: (values) => {
       let errors = {};
@@ -74,32 +75,39 @@ export const ProductModal = (props) => {
       if (!values.name) {
         errors.name = t("form.name-required");
       }
-      if (!values.description) {
-        errors.description = t("form.description-required");
+      if (!values.cuisine) {
+        errors.cusine = t("form.cuisine-required");
       }
-      if (!values.price) {
-        errors.price = t("form.price-required");
+      if (!values.delivery_price) {
+        errors.delivery_price = t("form.delivery-price-required");
       }
-      if (!values.restaurants) {
-        errors.restaurants = t("form.restaurants-required");
+      if (!values.delivery_min) {
+        errors.delivery_min = t("form.delivery-min-required");
+      }
+      if (!values.address) {
+        errors.address = t("form.address-required");
+      }
+      if (!values.category) {
+        errors.category = t("form.category-required");
       }
       return errors;
     },
     onSubmit: (values) => {
-      // let id = state.productsSlice.data.slice(-1)[0].id + 1;
+      let id = state.restaurantSlice.data.slice(-1)[0].id + 1;
       let item = {
-        id: "12",
-        image:
-          "https://i.picsum.photos/id/699/200/300.jpg?hmac=s68cvOJXxl4ZvaOM6PpveL8klBiaViC9Nbi02oETt5k",
-        product_name: values.name,
-        // description: values.description,
-        product_price: "values.price",
-        restaurant_name: values.restaurants,
+        id: id,
+        image: values.image,
+        name: values.name,
+        cuisine: values.cuisine,
+        delivery_price: values.delivery_price,
+        delivery_min: values.delivery_min,
+        address: values.address,
+        category: values.category,
       };
-      productsCreateAPI(item)
+      restaurantCreateAPI(item)
         .then((res) => {
-          let newArray = [...state.productsSlice.data, item];
-          dispatch(setProducts(newArray));
+          let newArray = [...state.restaurantSlice.data, item];
+          dispatch(setRestaurant(newArray));
         })
         .catch(() => {});
       toast.success(t("form.added"), {
@@ -136,7 +144,7 @@ export const ProductModal = (props) => {
           </ImageUpload>
         </ImageDiv>
         <DataDiv>
-          <DataTitle>{t("form.product title")}</DataTitle>
+          <DataTitle>{t("form.form title")}</DataTitle>
           <AddData>
             <DataLabel>{t("form.name")}</DataLabel>
             <DataInput
@@ -148,53 +156,73 @@ export const ProductModal = (props) => {
               value={formik.values.name || ""}
             />
             {formik.errors.name && <ErrorText>{formik.errors.name}</ErrorText>}
-            <DataLabel>{t("form.description")}</DataLabel>
+            <DataLabel>{t("form.cuisine")}</DataLabel>
             <DataInput
-              placeholder="description"
-              id="description"
-              name="description"
-              type="textarea"
+              placeholder="Fast Food, Drink, Ice Cream, Sea Food"
+              id="cuisine"
+              name="cuisine"
+              type="text"
               onChange={formik.handleChange}
-              value={formik.values.description || ""}
+              value={formik.values.cuisine || ""}
             />
-            {formik.errors.description && (
-              <ErrorText>{formik.errors.description}</ErrorText>
+            {formik.errors.cuisine && (
+              <ErrorText>{formik.errors.cuisine}</ErrorText>
             )}
-            <DataLabel>{t("form.price")}</DataLabel>
+            <DataLabel>{t("form.delivery-price")}</DataLabel>
             <DataInput
-              placeholder="price"
-              id="price"
-              name="price"
+              placeholder={5}
+              id="delivery_price"
+              name="delivery_price"
               type="number"
               onChange={formik.handleChange}
-              value={formik.values.price || ""}
+              value={formik.values.delivery_price || ""}
             />
-            {formik.errors.price && (
-              <ErrorText>{formik.errors.price}</ErrorText>
+            {formik.errors.delivery_price && (
+              <ErrorText>{formik.errors.delivery_price}</ErrorText>
             )}
-            <DataLabel>{t("form.restaurants")}</DataLabel>
-            <DataSelect
-              placeholder="restaurants"
-              id="restaurants"
-              name="restaurants"
-              type="textarea"
+            <DataLabel>{t("form.delivery-min")}</DataLabel>
+            <DataInput
+              placeholder={11}
+              id="delivery_min"
+              name="delivery_min"
+              type="number"
               onChange={formik.handleChange}
-              value={formik.values.restaurants || ""}
+              value={formik.values.delivery_min || ""}
+            />
+            {formik.errors.delivery_min && (
+              <ErrorText>{formik.errors.delivery_min}</ErrorText>
+            )}
+            <DataLabel>{t("form.address")}</DataLabel>
+            <DataInput
+              placeholder="Nizami street 45 Baku Azerbaijan"
+              id="address"
+              name="address"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.address || ""}
+            />
+            {formik.errors.address && (
+              <ErrorText>{formik.errors.address}</ErrorText>
+            )}
+            <DataLabel>{t("form.category")}</DataLabel>
+            <DataSelect
+              placeholder="Fast Food"
+              id="category"
+              name="category"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.category || ""}
             >
-              {restaurants?.map((restaurant) => {
+              {catlist.map((item) => {
                 return (
-                  <option
-                    value={restaurant.restaurant_name}
-                    key={restaurant.id}
-                  >
-                    {restaurant.restaurant_name}
+                  <option value={item} key={item}>
+                    {item.toUpperCase()}
                   </option>
                 );
               })}
-              )
             </DataSelect>
-            {formik.errors.restaurants && (
-              <ErrorText>{formik.errors.restaurants}</ErrorText>
+            {formik.errors.category && (
+              <ErrorText>{formik.errors.category}</ErrorText>
             )}
           </AddData>
         </DataDiv>

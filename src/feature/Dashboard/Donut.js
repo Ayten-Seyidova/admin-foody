@@ -1,46 +1,40 @@
-import { style } from "@mui/system";
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
+import { useTranslation } from "react-i18next";
 
-class Donut extends Component {
-  constructor(props) {
-    super(props);
+function Donut() {
+  const {t} = useTranslation()
+  const title = t('dashboard.donut-name')
+  const options = {
+    labels: ["KFC", "KLM", "American Express"],
+    title: {
+      text: title,
+      style: { color: "#C7C7C7", fontSize: "20px" },
+    },
+    legend: {
+      position: "bottom",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+  };
+  const series = [30, 40, 45];
 
-    this.state = {
-      options: {
-        labels: ["KFC", "KLM", "American Express"],
-        title: {
-          text: "Orders",
-          style: { color: "#C7C7C7", fontSize: "20px" },
-        },
-        legend: {
-          position: "bottom",
-        },
-        dataLabels: {
-          enabled: false,
-        },
-      },
-      series: [30, 40, 45],
-    };
-  }
-
-  render() {
-    return (
-      <div className="app">
-        <div className="row">
-          <div className="mixed-chart">
-            <Chart
-              width={450}
-              height={450}
-              options={this.state.options}
-              series={this.state.series}
-              type="donut"
-            />
-          </div>
+  return (
+    <div className="app">
+      <div className="row">
+        <div className="mixed-chart">
+          <Chart
+            width={450}
+            height={450}
+            options={options}
+            series={series}
+            type="donut"
+          />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Donut;

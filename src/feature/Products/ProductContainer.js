@@ -8,6 +8,9 @@ import {
   TablePaginationStyle,
   ProductImage,
   ProductImageContainer,
+  DeleteImage,
+  ProductPriceDelete,
+  Price,
 } from "./ProductContainer.styled";
 import { useTranslation } from "react-i18next";
 import { AddProductBtn } from "../../shared/components/Header/AddProductBtn";
@@ -15,8 +18,9 @@ import LoadGif from "../../Image/icon/loading.gif";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "../../Image/icon/delete.svg";
-import { CardContent, Grid, Typography } from "@mui/material";
+import { CardContent, Grid, Pagination, Typography } from "@mui/material";
 import { productsAPI, productsDeleteAPI } from "../../api/products";
+import { Stack } from "react-bootstrap";
 
 export default function ProductContainer() {
   const { t } = useTranslation();
@@ -113,11 +117,11 @@ export default function ProductContainer() {
               <ProductImageContainer>
                 <ProductImage src={item.image} alt={item.product_name} />
               </ProductImageContainer>
-              <CardContent>
+              <CardContent sx={{ display: "grid" }}>
                 <Typography
                   gutterBottom
                   variant="h5"
-                  component="div"
+                  component="span"
                   sx={{ color: "#1E1E30", fontSize: 18 }}
                 >
                   {item.product_name}
@@ -126,6 +130,7 @@ export default function ProductContainer() {
                   variant="body2"
                   color="#8E8E93"
                   sx={{ fontSize: 14 }}
+                  component="span"
                 >
                   {item.restaurant_name}
                 </Typography>
@@ -135,33 +140,26 @@ export default function ProductContainer() {
                   sx={{
                     fontSize: 12,
                     fontWeight: 500,
+                    display: "grid",
                   }}
+                  component="span"
                 >
-                  <div
-                    style={{
-                      justifyContent: "space-between",
-                      backgroundColor: "white",
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: 10,
-                    }}
-                  >
-                    <p>${item.product_price}</p>
-                    <img
+                  <ProductPriceDelete sx={{ backgroundColor: "red" }}>
+                    <Price>${item.product_price}</Price>
+                    <DeleteImage
                       size="small"
                       onClick={() => deleteProduct(item.id)}
                       src={DeleteIcon}
-                      style={{ position: "inherit" }}
-                      alt="dcdc"
+                      alt="delete"
                     />
-                  </div>
+                  </ProductPriceDelete>
                 </Typography>
               </CardContent>
             </Grid>
           );
         })}
       </TableContainer>
-      <TablePaginationStyle
+      {/* <TablePaginationStyle
         rowsPerPageOptions={[10, 25, 50]}
         component="div"
         count={products?.length}
@@ -169,7 +167,10 @@ export default function ProductContainer() {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      /> */}
+      <Stack spacing={5}>
+        <Pagination count={page || 1} color="primary" />
+      </Stack>
       <ToastContainer />
     </ProductStyled>
   );
