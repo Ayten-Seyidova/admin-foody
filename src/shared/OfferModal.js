@@ -62,11 +62,10 @@ export const OfferModal = (props) => {
       return errors;
     },
     onSubmit: (values) => {
-      // let id = state.offersSlice.data.slice(-1)[0].id + 1;
+      let id = state.offersSlice.data.slice(-1)[0].id + 1;
       let item = {
-        id: "12",
-        image:
-          "https://i.picsum.photos/id/699/200/300.jpg?hmac=s68cvOJXxl4ZvaOM6PpveL8klBiaViC9Nbi02oETt5k",
+        id: id,
+        image: values.image,
         title: values.title,
         description: values.description,
       };
@@ -75,7 +74,7 @@ export const OfferModal = (props) => {
           let newArray = [...state.offersSlice.data, item];
           dispatch(setOffers(newArray));
         })
-        .catch(() => {});
+        .catch(() => { });
       toast.success(t("form.added"), {
         autoClose: 1000,
         pauseOnHover: true,

@@ -6,7 +6,6 @@ import {
   ProductSpan,
   ProductStyled,
   LoadingImage,
-  TablePaginationStyle,
   ProductImage,
   ProductImageContainer,
   DeleteImage,
@@ -22,11 +21,14 @@ import DeleteIcon from "../../Image/icon/delete.svg";
 import { CardContent, Grid, Pagination, Typography } from "@mui/material";
 import { productsAPI, productsDeleteAPI } from "../../api/products";
 import { Stack } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../store/slice/productsSlice";
 
 export default function ProductContainer() {
   const { t } = useTranslation();
 
-  const [products, setProducts] = React.useState(null);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   React.useEffect(() => {
     getProduct();
@@ -35,7 +37,7 @@ export default function ProductContainer() {
   const getProduct = () => {
     productsAPI
       .then((res) => {
-        setProducts(res.data.products);
+        dispatch(setProducts(res.data.products));
       })
       .catch((err) => {});
   };
@@ -53,8 +55,8 @@ export default function ProductContainer() {
       if (result.isConfirmed) {
         productsDeleteAPI(id)
           .then((res) => {
-            let newArray = [...products].filter((item) => item.id !== id);
-            setProducts(newArray);
+            let newArray = [...state.productsSlice.data].filter((item) => item.id !== id);
+            dispatch(setProducts(newArray));
           })
           .catch(() => {});
         toast.success(t("The operation is succesful!"), {
@@ -77,7 +79,7 @@ export default function ProductContainer() {
     setPage(0);
   };
 
-  if (!products) {
+  if (!state.productsSlice.data[0]) {
     return <LoadingImage src={LoadGif} alt="loading" />;
   }
 
@@ -101,7 +103,7 @@ export default function ProductContainer() {
           flexWrap: "wrap",
         }}
       >
-        {products.map((item) => {
+        {state.productsSlice.data.map((item) => {
           return (
             <Grid
               key={item.id}
@@ -160,16 +162,7 @@ export default function ProductContainer() {
           );
         })}
       </TableContainer>
-      {/* <TablePaginationStyle
-        rowsPerPageOptions={[10, 25, 50]}
-        component="div"
-        count={products?.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      /> */}
-      <Stack spacing={5}>
+      <Stack spacing={5} className="mt-5">
         <Pagination count={page || 1} color="primary" />
       </Stack>
       <ToastContainer />

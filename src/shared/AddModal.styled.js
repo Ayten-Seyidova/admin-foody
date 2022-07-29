@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const ModalDiv = styled.div`
   padding: 6px 44px 14px 9px;
-  height: 125%;
+  height: 100%;
+  overflow: hidden;
   @media (max-width: 992px) {
-    overflow-y: auto;
-  }
-`;
+        overflow-y: auto;
+    }
+`
 
 export const ImageDiv = styled.div`
   display: flex;
@@ -57,6 +58,7 @@ export const ImageUpload = styled.div`
   background-color: rgba(67, 68, 90, 1);
   border-radius: 14px;
   height: 120px;
+  padding-right: 15px;
   flex: 6;
   position: relative;
   cursor: pointer;
@@ -97,12 +99,17 @@ export const DataDiv = styled.div`
 export const AddData = styled.div`
   background-color: rgba(67, 68, 90, 1);
   border-radius: 14px;
-  height: 100%;
   flex: 6;
   padding: 27px 0;
+  padding-right: 10px;
   @media (max-width: 992px) {
     flex: 10;
   }
+`;
+
+export const DataScroll = styled.div`
+  overflow-y: auto;
+  max-height: 260px;
 `;
 
 export const DataLabel = styled.label`
