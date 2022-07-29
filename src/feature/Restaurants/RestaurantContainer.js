@@ -6,7 +6,6 @@ import {
   RestaurantSpan,
   RestaurantStyled,
   LoadingImage,
-  TablePaginationStyle,
   RestaurantImage,
   RestaurantImageContainer,
   DeleteImage,
@@ -20,11 +19,14 @@ import DeleteIcon from "../../Image/icon/delete.svg";
 import { CardContent, Grid, Pagination, Typography } from "@mui/material";
 import { restaurantAPI, restaurantDeleteAPI } from "../../api/restaurant";
 import { Stack } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { setRestaurant } from "../../store/slice/restaurantSlice";
 
 export default function RestaurantContainer() {
   const { t } = useTranslation();
 
-  const [restaurant, setRestaurants] = React.useState(null);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   React.useEffect(() => {
     getRestaurant();
@@ -33,7 +35,7 @@ export default function RestaurantContainer() {
   const getRestaurant = () => {
     restaurantAPI
       .then((res) => {
-        setRestaurants(res.data.restaurant);
+        dispatch(setRestaurant(res.data.restaurant));
       })
       .catch((err) => {});
   };
@@ -51,8 +53,8 @@ export default function RestaurantContainer() {
       if (result.isConfirmed) {
         restaurantDeleteAPI(id)
           .then((res) => {
-            let newArray = [...restaurant].filter((item) => item.id !== id);
-            setRestaurants(newArray);
+            let newArray = [...state.restaurantSlice.data].filter((item) => item.id !== id);
+            dispatch(setRestaurant(newArray));
           })
           .catch(() => {});
         toast.success(t("The operation is succesful!"), {
@@ -75,7 +77,7 @@ export default function RestaurantContainer() {
     setPage(0);
   };
 
-  if (!restaurant) {
+  if (!state.restaurantSlice.data[0]) {
     return <LoadingImage src={LoadGif} alt="loading" />;
   }
 
@@ -98,7 +100,7 @@ export default function RestaurantContainer() {
           flexWrap: "wrap",
         }}
       >
-        {restaurant.map((item) => {
+        {state.restaurantSlice.data.map((item) => {
           return (
             <Grid
               key={item.id}
@@ -142,7 +144,6 @@ export default function RestaurantContainer() {
                 </Typography>
               </CardContent>
               <DeleteImage
-                // size="small"
                 onClick={() => deleteRestaurant(item.id)}
                 src={DeleteIcon}
                 alt="delete"
@@ -151,7 +152,7 @@ export default function RestaurantContainer() {
           );
         })}
       </TableContainer>
-      <Stack spacing={5}>
+      <Stack spacing={5} className="mt-5">
         <Pagination count={page || 1} color="primary" />
       </Stack>
       <ToastContainer />

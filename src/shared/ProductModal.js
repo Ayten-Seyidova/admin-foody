@@ -21,6 +21,7 @@ import {
   ImageTitleText,
   ImagePreview,
   DataSelect,
+  DataScroll,
 } from "./AddModal.styled";
 import UploadIcon from "../Image/icon/upload.svg";
 import { productsCreateAPI } from "../api/products";
@@ -45,7 +46,7 @@ export const ProductModal = (props) => {
       .then((res) => {
         setRestaurants(res.data.restaurant);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   function handleChange(e) {
@@ -86,15 +87,14 @@ export const ProductModal = (props) => {
       return errors;
     },
     onSubmit: (values) => {
-      // let id = state.productsSlice.data.slice(-1)[0].id + 1;
-      console.log(state)
+      let id = state.productsSlice.data.slice(-1)[0].id + 1;
+
       let item = {
-        id: 12,
-        image:
-          "https://i.picsum.photos/id/699/200/300.jpg?hmac=s68cvOJXxl4ZvaOM6PpveL8klBiaViC9Nbi02oETt5k",
+        id: id,
+        image: values.image,
         product_name: values.name,
-        // description: values.description,
-        product_price: "values.price",
+        description: values.description,
+        product_price: values.price,
         restaurant_name: values.restaurants,
       };
       productsCreateAPI(item)
@@ -102,7 +102,7 @@ export const ProductModal = (props) => {
           let newArray = [...state.productsSlice.data, item];
           dispatch(setProducts(newArray));
         })
-        .catch(() => {});
+        .catch(() => { });
       toast.success(t("form.added"), {
         autoClose: 1000,
         pauseOnHover: true,
@@ -139,64 +139,66 @@ export const ProductModal = (props) => {
         <DataDiv>
           <DataTitle>{t("form.product title")}</DataTitle>
           <AddData>
-            <DataLabel>{t("form.name")}</DataLabel>
-            <DataInput
-              placeholder="Soup"
-              id="name"
-              name="name"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.name || ""}
-            />
-            {formik.errors.name && <ErrorText>{formik.errors.name}</ErrorText>}
-            <DataLabel>{t("form.description")}</DataLabel>
-            <DataInput
-              placeholder="description"
-              id="description"
-              name="description"
-              type="textarea"
-              onChange={formik.handleChange}
-              value={formik.values.description || ""}
-            />
-            {formik.errors.description && (
-              <ErrorText>{formik.errors.description}</ErrorText>
-            )}
-            <DataLabel>{t("form.price")}</DataLabel>
-            <DataInput
-              placeholder="price"
-              id="price"
-              name="price"
-              type="number"
-              onChange={formik.handleChange}
-              value={formik.values.price || ""}
-            />
-            {formik.errors.price && (
-              <ErrorText>{formik.errors.price}</ErrorText>
-            )}
-            <DataLabel>{t("form.restaurants")}</DataLabel>
-            <DataSelect
-              placeholder="restaurants"
-              id="restaurants"
-              name="restaurants"
-              type="textarea"
-              onChange={formik.handleChange}
-              value={formik.values.restaurants || ""}
-            >
-              {restaurants?.map((restaurant) => {
-                return (
-                  <option
-                    value={restaurant.restaurant_name}
-                    key={restaurant.id}
-                  >
-                    {restaurant.restaurant_name}
-                  </option>
-                );
-              })}
-              )
-            </DataSelect>
-            {formik.errors.restaurants && (
-              <ErrorText>{formik.errors.restaurants}</ErrorText>
-            )}
+            <DataScroll>
+              <DataLabel>{t("form.name")}</DataLabel>
+              <DataInput
+                placeholder="Soup"
+                id="name"
+                name="name"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.name || ""}
+              />
+              {formik.errors.name && <ErrorText>{formik.errors.name}</ErrorText>}
+              <DataLabel>{t("form.description")}</DataLabel>
+              <DataInput
+                placeholder="description"
+                id="description"
+                name="description"
+                type="textarea"
+                onChange={formik.handleChange}
+                value={formik.values.description || ""}
+              />
+              {formik.errors.description && (
+                <ErrorText>{formik.errors.description}</ErrorText>
+              )}
+              <DataLabel>{t("form.price")}</DataLabel>
+              <DataInput
+                placeholder="price"
+                id="price"
+                name="price"
+                type="number"
+                onChange={formik.handleChange}
+                value={formik.values.price || ""}
+              />
+              {formik.errors.price && (
+                <ErrorText>{formik.errors.price}</ErrorText>
+              )}
+              <DataLabel>{t("form.restaurants")}</DataLabel>
+              <DataSelect
+                placeholder="restaurants"
+                id="restaurants"
+                name="restaurants"
+                type="textarea"
+                onChange={formik.handleChange}
+                value={formik.values.restaurants || ""}
+              >
+                {restaurants?.map((restaurant) => {
+                  return (
+                    <option
+                      value={restaurant.restaurant_name}
+                      key={restaurant.id}
+                    >
+                      {restaurant.restaurant_name}
+                    </option>
+                  );
+                })}
+                )
+              </DataSelect>
+              {formik.errors.restaurants && (
+                <ErrorText>{formik.errors.restaurants}</ErrorText>
+              )}
+            </DataScroll>
           </AddData>
         </DataDiv>
 

@@ -23,6 +23,8 @@ import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import { offersAPI } from "../../api/offers";
 import { offersDeleteAPI } from "../../api/offers";
+import { setOffers } from "../../store/slice/offersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const columns = [
   { id: "id", label: "id", minWidth: 100, align: "center" },
@@ -34,7 +36,8 @@ const columns = [
 export default function OfferContainer() {
   const { t } = useTranslation();
 
-  const [offers, setOffers] = React.useState(null);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   React.useEffect(() => {
     getOffers();
@@ -43,9 +46,9 @@ export default function OfferContainer() {
   const getOffers = () => {
     offersAPI
       .then((res) => {
-        setOffers(res.data.offers);
+        dispatch(setOffers(res.data.offers));
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   const deleteOffers = (id) => {
@@ -61,10 +64,10 @@ export default function OfferContainer() {
       if (result.isConfirmed) {
         offersDeleteAPI(id)
           .then((res) => {
-            let newArray = [...offers].filter((item) => item.id !== id);
-            setOffers(newArray);
+            let newArray = [...state.offersSlice.data].filter((item) => item.id !== id);
+            dispatch(setOffers(newArray));
           })
-          .catch(() => {});
+          .catch(() => { });
         toast.success(t("The operation is succesful!"), {
           autoClose: 1000,
           pauseOnHover: true,
@@ -85,7 +88,7 @@ export default function OfferContainer() {
     setPage(0);
   };
 
-  if (!offers) {
+  if (!state.offersSlice.data[0]) {
     return <LoadingImage src={LoadGif} alt="loading" />;
   }
 
@@ -114,7 +117,7 @@ export default function OfferContainer() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {offers
+              {state.offersSlice.data
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
@@ -159,7 +162,7 @@ export default function OfferContainer() {
         <TablePaginationStyle
           rowsPerPageOptions={[10, 25, 50]}
           component="div"
-          count={offers?.length}
+          count={state.offersSlice.data?.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
