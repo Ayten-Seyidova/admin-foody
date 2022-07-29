@@ -8,7 +8,7 @@ const DashboardContainer = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="charts">
+    <div className="charts container-fluid">
       <div className="donut">
         {<Donut name={t("dashboard.donuts-name")} />}
         <div className="donut-header">{t("dashboard.donut-description")}</div>

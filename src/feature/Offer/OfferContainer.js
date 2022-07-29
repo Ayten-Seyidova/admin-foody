@@ -90,7 +90,7 @@ export default function OfferContainer() {
   }
 
   return (
-    <OffersStyled>
+    <OffersStyled className="category-page">
       <OffersDiv>
         <OffersSpan>{t("menu.offers")}</OffersSpan>
         <AddProductBtn name={t("add offer")} pagename="offers" placement="end" />

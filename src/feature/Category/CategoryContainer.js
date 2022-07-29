@@ -95,7 +95,7 @@ export default function CategoryContainer() {
   }
 
   return (
-    <CategoryStyled>
+    <CategoryStyled className="category-page">
       <CategoryDiv>
         <CategorySpan>{t("menu.category")}</CategorySpan>
         <AddProductBtn

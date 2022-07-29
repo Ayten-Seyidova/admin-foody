@@ -92,7 +92,7 @@ export default function OrderContainer() {
   }
 
   return (
-    <OrdersStyled>
+    <OrdersStyled className="category-page">
       <OrdersDiv>
         <OrdersSpan>{t("menu.orders")}</OrdersSpan>
       </OrdersDiv>
