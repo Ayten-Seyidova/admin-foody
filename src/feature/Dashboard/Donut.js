@@ -3,8 +3,8 @@ import Chart from "react-apexcharts";
 import { useTranslation } from "react-i18next";
 
 function Donut() {
-  const {t} = useTranslation()
-  const title = t('dashboard.donut-title')
+  const { t } = useTranslation();
+  const title = t("dashboard.donut-title");
   const options = {
     labels: ["KFC", "KLM", "American Express"],
     title: {
@@ -25,11 +25,12 @@ function Donut() {
       <div className="row">
         <div className="mixed-chart">
           <Chart
-            width={450}
+            width='100%'
             height={450}
             options={options}
             series={series}
             type="donut"
+            sx={{ backgroundColor: "red" }}
           />
         </div>
       </div>

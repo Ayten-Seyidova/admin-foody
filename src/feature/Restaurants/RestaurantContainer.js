@@ -1,4 +1,5 @@
 import * as React from "react";
+import "../Products/Products.css";
 import TableContainer from "@mui/material/TableContainer";
 import {
   RestaurantDiv,
@@ -16,8 +17,9 @@ import LoadGif from "../../Image/icon/loading.gif";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "../../Image/icon/delete.svg";
-import { CardContent, Grid, Typography } from "@mui/material";
+import { CardContent, Grid, Pagination, Typography } from "@mui/material";
 import { restaurantAPI, restaurantDeleteAPI } from "../../api/restaurant";
+import { Stack } from "react-bootstrap";
 
 export default function RestaurantContainer() {
   const { t } = useTranslation();
@@ -149,15 +151,9 @@ export default function RestaurantContainer() {
           );
         })}
       </TableContainer>
-      <TablePaginationStyle
-        rowsPerPageOptions={[10, 25, 50]}
-        component="div"
-        count={restaurant?.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      <Stack spacing={5}>
+        <Pagination count={page || 1} color="primary" />
+      </Stack>
       <ToastContainer />
     </RestaurantStyled>
   );

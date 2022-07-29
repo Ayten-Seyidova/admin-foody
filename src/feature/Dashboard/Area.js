@@ -61,7 +61,7 @@ function Area() {
         series={series}
         type="area"
         height={400}
-        width={560}
+        width='100%'
       />
     </div>
   );
