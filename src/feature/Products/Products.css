@@ -1,0 +1,32 @@
+.MuiPagination-root {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.MuiPagination-root > * > * > * {
+  background-color: #ec5cf8 !important;
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50% !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  color: #ffffff;
+}
+
+.MuiPagination-ul > :last-child > * {
+  background-color: transparent !important;
+  border: 2px solid #ec5cf8;
+}
+
+.MuiPagination-ul > :first-child > * {
+  background-color: transparent !important;
+  border: 2px solid #ec5cf8;
+}
+
+.MuiPagination-ul > :last-child > * > * {
+  color: #ec5cf8;
+}
+
+.MuiPagination-ul > :first-child > * > * {
+  color: #ec5cf8;
+}

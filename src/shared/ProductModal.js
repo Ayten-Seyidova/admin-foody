@@ -87,8 +87,9 @@ export const ProductModal = (props) => {
     },
     onSubmit: (values) => {
       // let id = state.productsSlice.data.slice(-1)[0].id + 1;
+      console.log(state)
       let item = {
-        id: "12",
+        id: 12,
         image:
           "https://i.picsum.photos/id/699/200/300.jpg?hmac=s68cvOJXxl4ZvaOM6PpveL8klBiaViC9Nbi02oETt5k",
         product_name: values.name,
