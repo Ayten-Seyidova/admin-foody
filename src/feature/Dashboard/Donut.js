@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 function Donut() {
   const {t} = useTranslation()
-  const title = t('dashboard.donut-name')
+  const title = t('dashboard.donut-title')
   const options = {
     labels: ["KFC", "KLM", "American Express"],
     title: {
