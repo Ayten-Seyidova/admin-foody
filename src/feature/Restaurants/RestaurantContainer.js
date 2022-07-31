@@ -16,17 +16,46 @@ import LoadGif from "../../Image/icon/loading.gif";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "../../Image/icon/delete.svg";
-import { CardContent, Grid, Pagination, Typography } from "@mui/material";
+import {
+  Box,
+  CardContent,
+  Grid,
+  MenuItem,
+  Pagination,
+  Select,
+  Typography,
+} from "@mui/material";
 import { restaurantAPI, restaurantDeleteAPI } from "../../api/restaurant";
 import { Stack } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setRestaurant } from "../../store/slice/restaurantSlice";
+import SelectCategory from "../Products/SelectCategory";
+import { categoryAPI } from "../../api/category";
 
 export default function RestaurantContainer() {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+
+  const [category, setCategory] = React.useState([]);
+  const [cat, setCat] = React.useState("");
+
+  React.useEffect(() => {
+    getCategory();
+  }, []);
+
+  const getCategory = () => {
+    categoryAPI
+      .then((res) => {
+        setCategory([...new Set(res.data.category.map((item) => item.name))]);
+      })
+      .catch((err) => {});
+  };
+
+  const handleChange = (event) => {
+    setCat(event.target.value);
+  };
 
   React.useEffect(() => {
     getRestaurant();
@@ -53,7 +82,9 @@ export default function RestaurantContainer() {
       if (result.isConfirmed) {
         restaurantDeleteAPI(id)
           .then((res) => {
-            let newArray = [...state.restaurantSlice.data].filter((item) => item.id !== id);
+            let newArray = [...state.restaurantSlice.data].filter(
+              (item) => item.id !== id
+            );
             dispatch(setRestaurant(newArray));
           })
           .catch(() => {});
@@ -85,11 +116,33 @@ export default function RestaurantContainer() {
     <RestaurantStyled>
       <RestaurantDiv>
         <RestaurantSpan>{t("menu.restaurants")}</RestaurantSpan>
-        <AddProductBtn
-          name={t("add restaurant")}
-          pagename="restaurant"
-          placement="end"
-        />
+        <div className="right-side">
+          <Box sx={{ minWidth: "40%", height: 35 }}>
+            <Select
+              value={cat}
+              onChange={handleChange}
+              sx={{
+                height: 35,
+                width: 150,
+                fontFamily: "Roboto",
+                fontSize: 14,
+                fontWeight: 500,
+              }}
+            >
+              <MenuItem value="">All</MenuItem>
+              {category.map((item) => (
+                <MenuItem key={item} value={item} sx={{ fontSize: 14 }}>
+                  {item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}
+                </MenuItem>
+              ))}
+            </Select>
+          </Box>
+          <AddProductBtn
+            name={t("add restaurant")}
+            pagename="restaurant"
+            placement="end"
+          />
+        </div>
       </RestaurantDiv>
 
       <TableContainer
@@ -100,57 +153,66 @@ export default function RestaurantContainer() {
           flexWrap: "wrap",
         }}
       >
-        {state.restaurantSlice.data.map((item) => {
-          return (
-            <Grid
-              key={item.id}
-              sx={{
-                width: 247,
-                height: 83,
-                background: "#FFFFFF",
-                boxShadow: "0px 4px 4px rgba(57, 57, 57, 0.25)",
-                borderRadius: "5px",
-                marginRight: 3,
-                marginBottom: 3,
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <RestaurantImageContainer>
-                <RestaurantImage src={item.image} alt={item.restaurant_name} />
-              </RestaurantImageContainer>
-
-              <CardContent
+        {state.restaurantSlice.data
+          .filter(
+            cat
+              ? (item) => item.category_name.toLowerCase() === cat
+              : (item) => item
+          )
+          .map((item) => {
+            return (
+              <Grid
+                key={item.id}
                 sx={{
-                  width: "65%",
-                  height: "100%",
-                  alignItems: "center",
-                  display: "grid",
+                  width: 247,
+                  height: 83,
+                  background: "#FFFFFF",
+                  boxShadow: "0px 4px 4px rgba(57, 57, 57, 0.25)",
+                  borderRadius: "5px",
+                  marginRight: 3,
+                  marginBottom: 3,
+                  display: "flex",
+                  flexDirection: "row",
                 }}
               >
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ color: "#1E1E30", fontSize: 18 }}
+                <RestaurantImageContainer>
+                  <RestaurantImage
+                    src={item.image}
+                    alt={item.restaurant_name}
+                  />
+                </RestaurantImageContainer>
+
+                <CardContent
+                  sx={{
+                    width: "65%",
+                    height: "100%",
+                    alignItems: "center",
+                    display: "grid",
+                  }}
                 >
-                  {item.restaurant_name}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ color: "#828282", fontSize: 14 }}
-                >
-                  {item.category_name}
-                </Typography>
-              </CardContent>
-              <DeleteImage
-                onClick={() => deleteRestaurant(item.id)}
-                src={DeleteIcon}
-                alt="delete"
-              />
-            </Grid>
-          );
-        })}
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={{ color: "#1E1E30", fontSize: 18 }}
+                  >
+                    {item.restaurant_name}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={{ color: "#828282", fontSize: 14 }}
+                  >
+                    {item.category_name}
+                  </Typography>
+                </CardContent>
+                <DeleteImage
+                  onClick={() => deleteRestaurant(item.id)}
+                  src={DeleteIcon}
+                  alt="delete"
+                />
+              </Grid>
+            );
+          })}
       </TableContainer>
       <Stack spacing={5} className="mt-5">
         <Pagination count={page || 1} color="primary" />
