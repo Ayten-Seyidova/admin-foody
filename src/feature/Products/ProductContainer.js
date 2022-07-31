@@ -1,5 +1,5 @@
 import * as React from "react";
-import './Products.css'
+import "./Products.css";
 import TableContainer from "@mui/material/TableContainer";
 import {
   ProductDiv,
@@ -23,6 +23,7 @@ import { productsAPI, productsDeleteAPI } from "../../api/products";
 import { Stack } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../store/slice/productsSlice";
+import SelectCategory from "./SelectCategory";
 
 export default function ProductContainer() {
   const { t } = useTranslation();
@@ -55,7 +56,9 @@ export default function ProductContainer() {
       if (result.isConfirmed) {
         productsDeleteAPI(id)
           .then((res) => {
-            let newArray = [...state.productsSlice.data].filter((item) => item.id !== id);
+            let newArray = [...state.productsSlice.data].filter(
+              (item) => item.id !== id
+            );
             dispatch(setProducts(newArray));
           })
           .catch(() => {});
@@ -87,11 +90,14 @@ export default function ProductContainer() {
     <ProductStyled>
       <ProductDiv>
         <ProductSpan>{t("menu.products")}</ProductSpan>
-        <AddProductBtn
-          name={t("add product")}
-          pagename="products"
-          placement="end"
-        />
+        <div className="right-side">
+          <SelectCategory />
+          <AddProductBtn
+            name={t("add product")}
+            pagename="products"
+            placement="end"
+          />
+        </div>
       </ProductDiv>
 
       <TableContainer

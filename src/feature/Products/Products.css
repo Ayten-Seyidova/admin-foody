@@ -3,6 +3,32 @@
   align-items: center;
   display: flex;
 }
+
+.MuiBox-root {
+  background-color: #5a5b70;
+}
+
+.MuiBox-root {
+  border-radius: 14px;
+}
+
+.MuiBox-root > * > * {
+  border: none !important;
+  fill: white !important;
+  color: #f2f2f2 !important;
+}
+
+.right-side {
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+  align-items: center;
+}
+
+.right-side > * {
+  height: 35px !important;
+}
+
 .MuiPagination-root > * > * > * {
   background-color: #ec5cf8 !important;
   width: 64px !important;
