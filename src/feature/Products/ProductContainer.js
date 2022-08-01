@@ -18,12 +18,21 @@ import LoadGif from "../../Image/icon/loading.gif";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "../../Image/icon/delete.svg";
-import { CardContent, Grid, Pagination, Typography } from "@mui/material";
+import {
+  Box,
+  CardContent,
+  Grid,
+  MenuItem,
+  Pagination,
+  Select,
+  Typography,
+} from "@mui/material";
 import { productsAPI, productsDeleteAPI } from "../../api/products";
 import { Stack } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../store/slice/productsSlice";
 import SelectCategory from "./SelectCategory";
+import { categoryAPI } from "../../api/category";
 
 export default function ProductContainer() {
   const { t } = useTranslation();

@@ -29,7 +29,6 @@ import { restaurantAPI, restaurantDeleteAPI } from "../../api/restaurant";
 import { Stack } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setRestaurant } from "../../store/slice/restaurantSlice";
-import SelectCategory from "../Products/SelectCategory";
 import { categoryAPI } from "../../api/category";
 
 export default function RestaurantContainer() {
@@ -39,7 +38,7 @@ export default function RestaurantContainer() {
   const state = useSelector((state) => state);
 
   const [category, setCategory] = React.useState([]);
-  const [cat, setCat] = React.useState("");
+  const [cat, setCat] = React.useState("All");
 
   React.useEffect(() => {
     getCategory();
@@ -119,7 +118,7 @@ export default function RestaurantContainer() {
         <div className="right-side">
           <Box sx={{ minWidth: "40%", height: 35 }}>
             <Select
-              value={cat}
+              value={cat || "All"}
               onChange={handleChange}
               sx={{
                 height: 35,
@@ -129,10 +128,12 @@ export default function RestaurantContainer() {
                 fontWeight: 500,
               }}
             >
-              <MenuItem value="">All</MenuItem>
+              <MenuItem value="All" selected>
+                Category type
+              </MenuItem>
               {category.map((item) => (
                 <MenuItem key={item} value={item} sx={{ fontSize: 14 }}>
-                  {item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}
+                  {item}
                 </MenuItem>
               ))}
             </Select>
@@ -148,15 +149,15 @@ export default function RestaurantContainer() {
       <TableContainer
         sx={{
           width: "100%",
-          height: "300px",
+          maxHeight: "1000px",
           display: "flex",
           flexWrap: "wrap",
         }}
       >
         {state.restaurantSlice.data
           .filter(
-            cat
-              ? (item) => item.category_name.toLowerCase() === cat
+            cat !== "All"
+              ? (item) => item.category_name === cat
               : (item) => item
           )
           .map((item) => {

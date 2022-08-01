@@ -69,6 +69,11 @@ function Area() {
     },
   ];
   const options = {
+    chart: {
+      toolbar: {
+        show: false,
+      },
+    },
     tooltip: {
       enabled: false,
     },
@@ -155,7 +160,7 @@ function Area() {
   };
 
   return (
-    <div id="chart">
+    <div class="area">
       <ReactApexChart
         options={options}
         series={series}
