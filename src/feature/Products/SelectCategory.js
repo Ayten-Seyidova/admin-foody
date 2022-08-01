@@ -6,7 +6,7 @@ import { categoryAPI } from "../../api/category";
 
 export default function SelectCategory() {
   const [category, setCategory] = React.useState([]);
-  const [cat, setCat] = React.useState("");
+  const [cat, setCat] = React.useState("All");
 
   React.useEffect(() => {
     getCategory();
@@ -25,9 +25,9 @@ export default function SelectCategory() {
   };
 
   return (
-    <Box sx={{ minWidth: "40%", height: 35 }}>
+    <Box sx={{ maxWidth: "199px", height: 35 }}>
       <Select
-        value={cat}
+        value={cat || "All"}
         onChange={handleChange}
         sx={{
           height: 35,
@@ -37,9 +37,12 @@ export default function SelectCategory() {
           fontWeight: 500,
         }}
       >
+        <MenuItem value="All" selected>
+          Category type
+        </MenuItem>
         {category.map((item) => (
           <MenuItem key={item} value={item} sx={{ fontSize: 14 }}>
-            {item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}
+            {item}
           </MenuItem>
         ))}
       </Select>

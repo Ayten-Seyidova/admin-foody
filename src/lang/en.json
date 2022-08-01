@@ -44,7 +44,7 @@
       "area-subtitle": "Years",
       "assigned-risks": "Assigned risks",
       "assigned-action-items": "Assigned action items",
-      "no-risks": "There are no ̰ risks assigned",
+      "no-risks": "There are no risks assigned",
       "no-items": "There are no action items assigned"
     },
     "form": {
@@ -59,7 +59,7 @@
       "upload-product-img": "Upload your product image",
       "upload-img": "Upload image",
       "id": "ID",
-      "image": "image",
+      "image": "Image",
       "form product title": "Add your Product description and necessary information",
       "offer title": "Add your Offer information",
       "form title": "Add your necessary information",

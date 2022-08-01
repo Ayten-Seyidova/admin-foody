@@ -7,6 +7,7 @@ export const OrdersStyled = styled.div`
 `
 export const OrdersDiv = styled.div`
    background-color: rgba(39, 40, 60, 1);
+   width: 99%;
    border-radius: 14px;
    padding: 18px 21px;
    margin-bottom: 40px;

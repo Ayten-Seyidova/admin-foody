@@ -13,7 +13,7 @@ const DashboardContainer = () => {
         {<Donut name={t("dashboard.donuts-name")} />}
         <div className="donut-header">{t("dashboard.donut-description")}</div>
       </div>
-      <div className="area">{<Area />}</div>
+      {<Area />}
       <div className="risk">
         {
           <Risk

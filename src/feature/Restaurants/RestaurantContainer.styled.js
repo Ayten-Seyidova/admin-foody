@@ -8,6 +8,7 @@ export const RestaurantStyled = styled.div`
 export const RestaurantDiv = styled.div`
   background-color: rgba(39, 40, 60, 1);
   border-radius: 14px;
+  width: 99%;
   padding: 18px 21px;
   margin-bottom: 40px;
   display: flex;

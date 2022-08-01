@@ -105,7 +105,7 @@ export default function CategoryContainer() {
         />
       </CategoryDiv>
 
-      <Paper sx={{ width: "100%", boxShadow: "none" }}>
+      <Paper sx={{ width: "99%", boxShadow: "none" }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
@@ -116,7 +116,7 @@ export default function CategoryContainer() {
                     align={column.align}
                     cellwidth={column.minWidth}
                   >
-                    {t(`form.` + column.label).toUpperCase()}
+                    {t(`form.` + column.label)}
                   </TableCell>
                 ))}
                 <TableCell align={"right"} cellwidth={"20"}></TableCell>
